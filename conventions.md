@@ -62,14 +62,16 @@ Required on `g-draft` handoffs:
 
 ```
 **Voice Intent**
-- **Edge:** <the claim or angle to sharpen and lead with>
-- **No-soften zone:** <what must not be diluted, softened, or appeased>
-- **Landing:** <how you want it to feel to the reader>
+- **Thesis:** <the central claim the piece stands on; what it actually argues>
+- **Non-negotiables:** <what must not be diluted, hedged, or appeased away>
+- **Landing:** <how you want the argument to settle with the reader>
 ```
 
 Optional line: `- **My read:** <one-sentence author self-read>`.
 
 **Never fabricate Voice Intent.** If the author has not supplied it in-chat, emit `SKIP: <reason>` instead of a Voice Intent card.
+
+The earlier field names (`Edge` / `No-soften zone`) are retired — see [`vocabulary.md`](vocabulary.md) for the reasoning. Treat any pasted Voice Intent using the old field names as equivalent: `Edge` → `Thesis`, `No-soften zone` → `Non-negotiables`.
 
 ## Sourcing
 

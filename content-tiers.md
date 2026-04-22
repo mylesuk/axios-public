@@ -18,7 +18,7 @@ Longform essays. Lower frequency. The tier most of the author's written work liv
 
 - **Format:** longform markdown (`60-Catalog/Articles/`), produced through `/draft` (or `g-draft` handoff).
 - **Scope:** a full argumentative spine. Evidence. Classical resonance where it clarifies. An honest fracture paragraph where the evidence runs thin.
-- **Reading level:** roughly Flesch-Kincaid 9–10. Respect the reader's intelligence; do not over-simplify, do not pad.
+- **Clarity, not grade level:** prose should move without friction — no run-on sentences, no clutter, no nested clauses obscuring the argument. Voice and precision take priority over any readability score. No Flesch-Kincaid or equivalent grade target is set; the Considered Witness register is not built to land at a specific grade and should not try. Respect the reader's intelligence; do not over-simplify, do not pad.
 - **Sourcing:** verifiable pointers — URLs, authors, dates, canonical editions. Distinguish citation from interpretation.
 - **Ending:** lands. No hedge, no shrug, no "thoughts?".
 

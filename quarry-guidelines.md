@@ -17,7 +17,7 @@ Grok's pre-filter job: **read the raw material and recommend the right lane**, t
    - Yes: `g-draft` to Articles. Voice Intent required (or explicit `SKIP: <reason>`).
 
 3. **Has the author pasted a saved catalog article and asked for packaging?**
-   - Yes: `g-ship` for derivative packaging (Claim-risk, Distribution, Metadata). The article is authoritative; do not restate its claims.
+   - Yes: `g-ship` for derivative packaging (Claim-risk band, Carry band, Metadata). The article is authoritative; do not restate its claims.
 
 4. **Is this a single deliberate pick worth distilling later?** (One X thread with 1–3 real claims; one quote with attribution; one article the author already read and wants saved; one passage from a book.)
    - Yes: `g-capture` to `Atelier/10-Sources/`. Emit Source summary, Source metadata, Candidate insights, Verbatim passages, Metadata, `Handoff: /capture`.

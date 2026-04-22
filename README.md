@@ -15,10 +15,11 @@ The **private vault** (`Axios/`) contains journals, therapy, inquiry, raw corpor
 1. [`glossary.md`](glossary.md) — the terms (Atelier, Quarry, Journal, Steward of Value, etc.).
 2. [`README.md`](README.md) — you are here. Pipeline below.
 3. [`persona-voice.md`](persona-voice.md) — public persona and voice.
-4. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.
-5. [`conventions.md`](conventions.md) — slugs, metadata, filename rules.
-6. [`quarry-guidelines.md`](quarry-guidelines.md) — how Grok acts as pre-filter and router.
-7. [`triggers/`](triggers/) — the `g-*` contracts.
+4. [`vocabulary.md`](vocabulary.md) — preferred vs retired terms, with reasons. The antibody against register drift.
+5. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.
+6. [`conventions.md`](conventions.md) — slugs, metadata, filename rules.
+7. [`quarry-guidelines.md`](quarry-guidelines.md) — how Grok acts as pre-filter and router.
+8. [`triggers/`](triggers/) — the `g-*` contracts.
 
 ## Pipeline at a glance
 
@@ -41,11 +42,13 @@ Each trigger emits a single fenced markdown block whose first line is the matchi
 From `10-Sources/`, the vault pipeline continues:
 
 ```
-10-Sources/  ->  /distill   ->  20-Insights/   ->  /cluster  ->  40-Themes/
-                                                                     |
-                                                                     v
-                                             50-Workshop/  ->  /publish  ->  60-Catalog/
+10-Sources/  ->  /distill  ->  20-Insights/  +  40-Themes/
+                                                    |
+                                                    v
+                                 50-Workshop/  ->  /ship  or  /draft  ->  60-Catalog/
 ```
+
+`/distill` runs the full chain in one conversation: source → atomic insight(s) in `20-Insights/` → theme match in `40-Themes/` → ship / support-existing-draft / bank recommendation. The default recommendation is **bank** — compounding inside a theme beats shipping a single-insight post.
 
 **Journal/** runs in parallel (inner reflection, therapy, inquiry). It is **not** part of the Atelier pipeline. Grok does not surface Journal material and does not blend inner-work voice with public content.
 

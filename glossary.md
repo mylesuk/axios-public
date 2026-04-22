@@ -8,7 +8,7 @@ The whole system — a single long-horizon thinking and content project. Impleme
 
 ## Atelier
 
-The philosophical thinking studio and content engine inside Axios. Organized by pipeline stage, not by topic:
+The philosophical thinking studio inside Axios, with a publishing line attached. Organized by pipeline stage, not by topic:
 
 - `10-Sources/` — raw captures worth distilling.
 - `20-Insights/` — atomic, evaluated claims. The **primary unit of value** in the system.
@@ -82,11 +82,11 @@ Six canonical value categories the Steward tracks and integrates:
 
 Priority order of care: **self → family → friends → community → country → humanity**. The Steward tends the inner circles well before making grand universalist claims. Pieces can be tagged with which circle they primarily serve.
 
-## Claim-risk, Distribution
+## Claim-risk band, Carry band
 
-Two scoring axes applied at packaging time:
+Two qualitative bands applied at packaging time. Both use the same four-band vocabulary as the Sextet: `weak | adequate | strong | exceptional`.
 
-- **Claim-risk** (0–10): how provocative / likely to provoke pushback the piece's actual claims are.
-- **Distribution** (0–10): how much share pull the piece has across the target audience.
+- **Claim-risk band** — how provocative / likely to provoke pushback the piece's actual claims are. Higher bands call for thicker evidence and sharper fracture-lines, not softer claims.
+- **Carry band** — the piece's natural pull: format fit, save-worthiness, shape of the opening, clarity of the anchor. **Not** algorithmic amplification. A piece carries when someone who values the same things recognises it and holds onto it.
 
-Neither is a ceiling or a target. They are honest reads used to tune packaging, not to optimize for virality or outrage.
+Neither band is a ceiling or a target. They are honest reads used to tune packaging, not to optimize for virality or outrage. Numeric 0–10 scoring was retired after it invited score-shopping — see [`vocabulary.md`](vocabulary.md).
