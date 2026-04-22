@@ -7,7 +7,7 @@ The **private vault** (`Axios/`) contains journals, therapy, inquiry, raw corpor
 ## Purpose
 
 1. Give Grok a stable, linkable source of truth for how Axios thinks and how its pipeline works.
-2. Document the `q-*` trigger contracts Grok uses to hand material off to the private vault via Cursor commands.
+2. Document the `g-*` trigger contracts Grok uses to hand material off to the private vault via Cursor commands.
 3. Make the persona, voice, and content-tier frame legible to any model or collaborator the author chooses to share them with.
 
 ## Read in this order
@@ -18,7 +18,7 @@ The **private vault** (`Axios/`) contains journals, therapy, inquiry, raw corpor
 4. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.
 5. [`conventions.md`](conventions.md) — slugs, metadata, filename rules.
 6. [`quarry-guidelines.md`](quarry-guidelines.md) — how Grok acts as pre-filter and router.
-7. [`triggers/`](triggers/) — the `q-*` contracts.
+7. [`triggers/`](triggers/) — the `g-*` contracts.
 
 ## Pipeline at a glance
 
@@ -30,11 +30,13 @@ Raw input                  (X thread, YouTube transcript, article, chat, voice m
     v
 Grok pre-filter/router     (TL;DR, candidate insights, routing recommendation)
     |
-    +---> q-export   ->  Quarry/                      (raw dump, mine later)
-    +---> q-capture  ->  Atelier/10-Sources/          (short and good; skip Quarry)
-    +---> q-draft    ->  Atelier/60-Catalog/Articles/ (longform article handoff)
-    +---> q-ship     ->  Atelier/60-Catalog/          (packaging: thread + carousel)
+    +---> g-quarry   ->  Quarry/                      (raw dump, mine later)
+    +---> g-capture  ->  Atelier/10-Sources/          (short and good; skip Quarry)
+    +---> g-draft    ->  Atelier/60-Catalog/Articles/ (longform article handoff)
+    +---> g-ship     ->  Atelier/60-Catalog/          (packaging: thread + carousel)
 ```
+
+Each trigger emits a single fenced markdown block whose first line is the matching Cursor slash command (`/quarry`, `/capture`, `/draft`, `/ship`). Click Grok's code-block copy button, paste into Cursor, press enter — the command auto-fires.
 
 From `10-Sources/`, the vault pipeline continues:
 
@@ -56,7 +58,7 @@ Grok's leverage is on the **intake side**:
 - Tolerance for messy pastes — output is always a single structured block.
 - Multi-pass summarization and routing.
 
-Grok's job, in one sentence: **read the raw material and produce the single Cursor-ready handoff block for the right lane**, preferring `q-capture` over `q-export` when the material is short and insight-dense, and `q-export` when the material is long, unfiltered, or likely to reward later mining.
+Grok's job, in one sentence: **read the raw material and produce the single Cursor-ready handoff block for the right lane**, preferring `g-capture` over `g-quarry` when the material is short and insight-dense, and `g-quarry` when the material is long, unfiltered, or likely to reward later mining.
 
 Full routing rules: [`quarry-guidelines.md`](quarry-guidelines.md).
 
