@@ -6,7 +6,7 @@ tags: [grok, ship, packaging, trigger, instruction]
 
 # `q-ship` — Grok-side trigger for derivative packaging handoff
 
-The Grok custom instruction the author triggers inside a Grok conversation **after** a polished article already exists in `Atelier/60-Catalog/Articles/`. The author pastes the saved article (with its YAML so Grok can see `voice-intent`) into Grok, lets Grok evaluate it, then types `q-ship`. Grok returns one Cursor-ready markdown block — the packaging handoff consumed by `/ship` in derivative mode (defined in [`the `/ship` command on the Cursor side`](the `/ship` command on the Cursor side)). Cursor uses the block to buff the article, generate an X thread, and generate an Instagram carousel, all saved to `Atelier/60-Catalog/`.
+The Grok custom instruction the author triggers inside a Grok conversation **after** a polished article already exists in `Atelier/60-Catalog/Articles/`. The author pastes the saved article (with its YAML so Grok can see `voice-intent`) into Grok, lets Grok evaluate it, then types `q-ship`. Grok returns one Cursor-ready markdown block — the packaging handoff consumed by `/ship` in derivative mode (defined in the `/ship` command on the Cursor side). Cursor uses the block to buff the article, generate an X thread, and generate an Instagram carousel, all saved to `Atelier/60-Catalog/`.
 
 ## How to install
 
@@ -68,7 +68,7 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 
 ## Cursor side
 
-After pasting the block into Cursor, run **`/ship`** (defined in [`the `/ship` command on the Cursor side`](the `/ship` command on the Cursor side)). The command detects `Claim-risk`, `Distribution`, `Metadata`, and the `Handoff: /ship` line and enters **derivative mode**:
+After pasting the block into Cursor, run **`/ship`** (defined in the `/ship` command on the Cursor side). The command detects `Claim-risk`, `Distribution`, `Metadata`, and the `Handoff: /ship` line and enters **derivative mode**:
 
 1. Resolves the canonical article path via `content-id` (or the optional `Article file:` hint).
 2. Applies Voice Intent (precedence: pasted intent this run > article YAML `voice-intent`).

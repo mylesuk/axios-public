@@ -6,7 +6,7 @@ tags: [grok, draft, article, trigger, instruction]
 
 # `q-draft` — Grok-side trigger for longform article handoff
 
-The Grok custom instruction the author triggers inside a Grok conversation once a longform article body has been drafted in chat. It produces a single Cursor-ready markdown block. Paste the output into Cursor and run `/draft`; the block is consumed by the handoff mode defined in [`the `/draft` command on the Cursor side`](the `/draft` command on the Cursor side) and saved to `Atelier/60-Catalog/Articles/`.
+The Grok custom instruction the author triggers inside a Grok conversation once a longform article body has been drafted in chat. It produces a single Cursor-ready markdown block. Paste the output into Cursor and run `/draft`; the block is consumed by the handoff mode defined in the `/draft` command on the Cursor side and saved to `Atelier/60-Catalog/Articles/`.
 
 ## How to install
 
@@ -65,7 +65,7 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 
 ## Cursor side
 
-After pasting the block into Cursor, run **`/draft`** (defined in [`the `/draft` command on the Cursor side`](the `/draft` command on the Cursor side)). The command detects the Voice Intent card + Metadata + `Handoff: /draft` line and enters **handoff mode**: it validates the gate, normalizes `content-id`, resolves the save date from `ship-date` (or today's local date), polishes the body to ship prose, and writes to `Atelier/60-Catalog/Articles/{date}-{content-id}.md`.
+After pasting the block into Cursor, run **`/draft`** (defined in the `/draft` command on the Cursor side). The command detects the Voice Intent card + Metadata + `Handoff: /draft` line and enters **handoff mode**: it validates the gate, normalizes `content-id`, resolves the save date from `ship-date` (or today's local date), polishes the body to ship prose, and writes to `Atelier/60-Catalog/Articles/{date}-{content-id}.md`.
 
 Do **not** include `Claim-risk`, `Distribution`, `Meaning frame`, or `Strategic Guidance` blocks in a `q-draft` output. Those belong to the downstream `q-ship` packaging pass run **after** the article is saved.
 

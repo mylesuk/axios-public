@@ -63,10 +63,10 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 
 ## Cursor side
 
-After pasting the block into Cursor, run **`/capture`** (defined in [`the `/capture` command on the Cursor side`](the `/capture` command on the Cursor side)). The command detects the `Source summary` + `Source metadata` + `Metadata` + `Handoff: /capture` line and enters **handoff mode**:
+After pasting the block into Cursor, run **`/capture`** (defined in the `/capture` command on the Cursor side). The command detects the `Source summary` + `Source metadata` + `Metadata` + `Handoff: /capture` line and enters **handoff mode**:
 
 1. Resolves the save path as `Atelier/10-Sources/source-{content-id}.md` (or `Atelier/10-Sources/Experiments/experiment-{content-id}-{YYYY-MM}.md` when `source-type` signals a lived experiment).
-2. Writes the source file from [`Atelier/10-Sources/_template.md`](the source template), populating:
+2. Writes the source file from the source template, populating:
    - YAML: `date` (today), `type: source`, `source-type`, `url` (from `source-url`), `author` (from `source-author`), `status: captured`, `tags` (from Metadata, deduplicated with the template's defaults).
    - Body: `Source summary` → "Why captured"; `Verbatim passages` → "Raw content / key passages"; `Candidate insights` → the distillation section as unchecked candidate claim stubs ready for `/distill`.
 3. Prints the saved path and offers the standard next-step choice (`/distill` / `/triage` / bank).
