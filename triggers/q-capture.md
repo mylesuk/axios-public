@@ -17,7 +17,7 @@ This is the pre-filter lane that makes Grok earn its keep on the intake side. It
 - **`q-draft`** when: a polished longform article body has been drafted in-chat.
 - **`q-ship`** when: a saved catalog article exists and the author is packaging it into derivatives.
 
-Routing rules are canonical in [axios-public/quarry-guidelines.md](../../../../Axios-Assets/Code/axios-public/quarry-guidelines.md).
+Routing rules are canonical in [axios-public/quarry-guidelines.md](../quarry-guidelines.md).
 
 ## How to install
 
