@@ -30,7 +30,7 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 >    - `source: grok` (always exactly this).
 >    - `topic:` short kebab-case slug inferred from the main subject of this conversation. 2-5 words, lowercased, hyphenated, no quotes. Pick the topic that covers the majority of the exchange.
 >    - `status: raw` (always exactly this).
->    - `tags:` a YAML inline list (`[tag-one, tag-two, ...]`) of 3-7 kebab-case tags derived from the conversation themes. Always include `grok`. Add subject-matter tags (e.g. `mstr`, `therapy`, `property-bali`, `content-strategy`, `looksmax`, `philosophy`, etc.).
+>    - `tags:` a YAML inline list (`[tag-one, tag-two, ...]`) of 3-7 kebab-case tags derived from the conversation themes. Always include `grok`. Add subject-matter tags (e.g. `philosophy`, `therapy`, `property-bali`, `content-strategy`, `stoicism`, etc.).
 >    - `status-closing:` optional — `draft` if the conversation is ongoing, omit otherwise.
 >    - Optional fields when relevant: `source-url:`, `source-author:`, `source-title:`, `duration:`.
 > 4. Closing `---` then one blank line.
