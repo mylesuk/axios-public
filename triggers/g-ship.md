@@ -26,14 +26,14 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 >
 > 2. One blank line.
 >
-> 3. A `**Claim-risk score**` block:
->    - A single integer score from 0 (benign, universally agreeable) to 10 (maximally provocative / likely to provoke strong pushback).
+> 3. A `**Claim-risk band**` block:
+>    - A single band from `weak | adequate | strong | exceptional` naming how provocatively the article pushes. `weak` means benign / universally agreeable; `exceptional` means maximally provocative / likely to provoke strong pushback.
 >    - A one- to two-sentence rationale naming which claims in the article carry the risk.
->    - Do **not** score above what the article actually argues. If the article hedges, the score is lower.
+>    - Do **not** band above what the article actually argues. If the article hedges, the band is lower.
 >
-> 4. A `**Distribution score**` block:
->    - A single integer score from 0 (inert, no share pull) to 10 (high viral / save / share pull across the target audience).
->    - A one- to two-sentence rationale naming the hook, the emotional lever, or the classical anchor driving share probability.
+> 4. A `**Carry band**` block (previously called *Distribution score*):
+>    - A single band from `weak | adequate | strong | exceptional` naming the piece's natural pull — whether it *carries* on its own intrinsic shape (save-worthiness, format fit, classical anchor strength, the clarity of the opening). Not algorithmic amplification, not engagement chasing.
+>    - A one- to two-sentence rationale naming the opening, the classical anchor, or the move in the piece that does the carrying.
 >
 > 5. *(Optional, include when genuinely relevant)* `**Meaning frame**` — one paragraph describing the lens the author is inviting the reader into (e.g. classical virtue, honest fracture, systems failure, developmental).
 >
@@ -77,13 +77,13 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 ````markdown
 /ship
 
-**Claim-risk score**
-- Score: 5
+**Claim-risk band**
+- Band: strong
 - Rationale: names a specific institutional failure by name.
 
-**Distribution score**
-- Score: 7
-- Rationale: classical anchor + clear fracture line, high save-pull.
+**Carry band**
+- Band: strong
+- Rationale: classical anchor + clear fracture line; saves well on both platforms.
 
 **Metadata**
 - **content-id:** example-thesis-slug
@@ -98,7 +98,7 @@ When the author clicks Grok's copy button, the paste that lands in Cursor starts
 
 ## Cursor side
 
-`/ship` (derivative mode) detects `Claim-risk`, `Distribution`, `Metadata`, and the `Handoff: /ship` line and:
+`/ship` (derivative mode) detects `Claim-risk band`, `Carry band`, `Metadata`, and the `Handoff: /ship` line and:
 
 1. Resolves the canonical article path via `content-id` (or the optional `Article file:` hint).
 2. Applies Voice Intent (precedence: pasted intent this run > article YAML `voice-intent`).
@@ -108,14 +108,14 @@ When the author clicks Grok's copy button, the paste that lands in Cursor starts
 
 ## Sequence
 
-1. Save the article first with `g-draft` → `/draft` (see [`g-draft.md`](g-draft.md)). Polish with Hemingway Desktop + hand edits.
+1. Save the article first with `g-draft` → `/draft` (see [`g-draft.md`](g-draft.md)). Hand edit + optional clarity pass (see [`toolkit.md`](toolkit.md)).
 2. Paste the **final saved article, body + YAML**, into a fresh Grok conversation so `voice-intent` is visible.
 3. Type `g-ship` — Grok emits the packaging block.
 4. Click copy, paste into Cursor, press enter. `/ship` fires on its own.
-5. Optional: ProWritingAid Premium polish on the thread and carousel before posting.
+5. Optional: clarity pass on the thread and carousel before posting (see [`toolkit.md`](toolkit.md)).
 
 ## Honesty rules
 
-- Do not fabricate Claim-risk or Distribution scores. Ground them in the article as written.
+- Do not fabricate Claim-risk or Carry bands. Ground them in the article as written.
 - Do not add new factual claims in the packaging block. The article is authoritative for claims.
 - If the packaging block drifts from the article, Cursor trusts the article.

@@ -8,7 +8,7 @@ tags: [grok, capture, source, trigger, instruction]
 
 The Grok custom instruction the author triggers after reviewing a **single deliberate piece of raw material** in a Grok conversation — one X thread, one article, one quote with attribution, one clean exchange, one book passage. Grok produces a single Cursor-ready markdown block, **beginning with `/capture`**, that saves the material directly to `Atelier/10-Sources/` with 1–3 candidate insight stubs already attached, **skipping Quarry**.
 
-Pairs with the Cursor command `/capture`. Previously named `q-capture`. This is the pre-filter lane that makes Grok earn its keep on the intake side. Distinct from [`g-quarry`](g-quarry.md) (raw corpora dump for later mining) and from [`g-draft`](g-draft.md) / [`g-ship`](g-ship.md) (article drafting / packaging).
+Pairs with the Cursor command `/capture`. Previously named `q-capture`. This is the **pre-filter lane** — Grok reads the raw material, pulls 1–3 atomic claim stubs, and hands the material to Cursor already shaped for distillation. Distinct from [`g-quarry`](g-quarry.md) (raw corpora dump for later mining) and from [`g-draft`](g-draft.md) / [`g-ship`](g-ship.md) (article drafting / packaging).
 
 ## When to use `g-capture` vs alternatives
 
@@ -104,9 +104,9 @@ When the author clicks Grok's copy button, the paste that lands in Cursor starts
 - YAML: `date` (today), `type: source`, `source-type`, `url` (from `source-url`), `author` (from `source-author`), `status: captured`, `tags` (from Metadata, deduplicated with template defaults).
 - Body: `Source summary` → "Why captured"; `Verbatim passages` → "Raw content / key passages"; `Candidate insights` → the distillation section as unchecked candidate claim stubs ready for `/distill`.
 
-The command prints the saved path and offers the standard next-step choice (`/distill` / `/triage` / bank).
+The command prints the saved path and offers the standard next-step choice (`/distill` or bank).
 
-Do **not** include Voice Intent, Claim-risk, Distribution, or Article draft sections in a `g-capture` output. Those belong to downstream lanes (`g-draft`, `g-ship`) run only after the source has been distilled into insights and a draft has emerged.
+Do **not** include Voice Intent, Claim-risk, Carry band, or Article draft sections in a `g-capture` output. Those belong to downstream lanes (`g-draft`, `g-ship`) run only after the source has been distilled into insights and a draft has emerged.
 
 ## Sequence
 

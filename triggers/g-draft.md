@@ -30,9 +30,9 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 >
 >    ```text
 >    **Voice Intent**
->    - **Edge:** <the claim or angle to sharpen and lead with>
->    - **No-soften zone:** <what must not be diluted, softened, or appeased>
->    - **Landing:** <how you want it to feel to the reader>
+>    - **Thesis:** <the central claim the piece stands on; what it actually argues>
+>    - **Non-negotiables:** <what must not be diluted, hedged, or appeased away>
+>    - **Landing:** <how you want the argument to settle with the reader>
 >    ```
 >
 >    Optional line: `- **My read:** <one-sentence author self-read>`.
@@ -57,7 +57,7 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 >
 >    Omit the block entirely when `series` is not `truth-over-time`.
 >
-> 6. A `## Article draft` heading, followed by the **complete polished article body** as continuous ship prose. Not thread fragments. Not tweet order. Not bullet points unless the article genuinely uses them. Write it the way Cursor will save it — consistent with a longform essay, FK ~9-10, clear argumentative spine. Preserve any source attribution inline. Include a single epistemic-honesty paragraph if the article surfaces one.
+> 6. A `## Article draft` heading, followed by the **complete polished article body** as continuous ship prose. Not thread fragments. Not tweet order. Not bullet points unless the article genuinely uses them. Write it the way Cursor will save it — consistent with a longform essay, clear argumentative spine, prose that moves without friction. **Do not target a Flesch-Kincaid or equivalent grade score.** The Considered Witness register is not built to hit one; voice and precision are the priority. Preserve any source attribution inline. Include a single epistemic-honesty paragraph if the article surfaces one.
 >
 > 7. As the very last line of the block, an explicit handoff line, verbatim:
 >
@@ -75,8 +75,8 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 /draft
 
 **Voice Intent**
-- **Edge:** ...
-- **No-soften zone:** ...
+- **Thesis:** ...
+- **Non-negotiables:** ...
 - **Landing:** ...
 
 **Metadata**
@@ -97,12 +97,12 @@ When the author clicks Grok's copy button, the paste that lands in Cursor starts
 
 `/draft` (handoff mode, defined in the `/draft` command on the Cursor side) validates the Voice Intent gate, normalizes `content-id`, resolves the save date from `ship-date` (or today's local date), polishes the body to ship prose, and writes to `Atelier/60-Catalog/Articles/{date}-{content-id}.md`.
 
-Do **not** include `Claim-risk`, `Distribution`, `Meaning frame`, or `Strategic Guidance` blocks in a `g-draft` output. Those belong to the downstream `g-ship` packaging pass run **after** the article is saved.
+Do **not** include `Claim-risk band`, `Carry band`, `Meaning frame`, or `Strategic Guidance` blocks in a `g-draft` output. Those belong to the downstream `g-ship` packaging pass run **after** the article is saved.
 
 ## Sequence
 
 1. Draft the article in a Grok conversation (`g-draft` is a handoff, not a writing aid).
 2. Type `g-draft` — Grok emits the block.
 3. Click copy, paste into Cursor, press enter. `/draft` fires on its own.
-4. Hemingway Desktop + hand edits on the saved article file.
+4. Hand edits + optional clarity pass on the saved article file (see [`toolkit.md`](toolkit.md)). No readability-grade target — voice and precision come first.
 5. When ready to package: paste the final article (with its YAML so Grok can see `voice-intent`) back into Grok and run `g-ship`. See [`g-ship.md`](g-ship.md).
