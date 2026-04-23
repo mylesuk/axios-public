@@ -1,6 +1,6 @@
 # Persona and Voice
 
-The public character the Atelier writes through, and the voice that character speaks in. Everything Grok produces for public-facing handoffs (`g-capture` insights, `g-draft` article bodies, `g-ship` packaging) should be consistent with both.
+The public character the Atelier writes through, and the voice that character speaks in. Everything Grok produces via the `xbridge` trigger (candidate insights, verbatim passage attributions, source summaries) should be consistent with both. Article bodies and derivative packaging are drafted in Cursor, not Grok — but the same voice discipline applies there.
 
 ## Persona — The Steward of Value
 
@@ -84,7 +84,7 @@ The test between strike and grievance is not tone but **direction**: what the pi
 
 ## What this means for Grok
 
-When producing article bodies (`g-draft`), packaging (`g-ship`), or insight stubs (`g-capture`):
+When producing candidate-insight stubs in the `xbridge` handoff, or when drafting article bodies and packaging in Cursor:
 
 - Default to the **prophetic** register on civilizational topics.
 - Refuse to write in the **grievance** register. If source material pulls that direction, surface the register mismatch in a short line above the block rather than laundering it into prose.

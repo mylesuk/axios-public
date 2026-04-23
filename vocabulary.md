@@ -1,6 +1,6 @@
 # Vocabulary
 
-The words Axios prefers and the words it has retired, with a short reason for each retirement. Grok should treat this as authoritative for any public-facing handoff (`g-capture`, `g-draft`, `g-ship`). When a preferred term and a retired term would fit the same slot, use the preferred one. If Grok would otherwise reach for a retired term, route around it or surface the mismatch in a single line before the handoff block rather than laundering it into prose.
+The words Axios prefers and the words it has retired, with a short reason for each retirement. Grok should treat this as authoritative for any public-facing output, including the single `xbridge` trigger and any prose in the candidate-insights or verbatim-passage sections. When a preferred term and a retired term would fit the same slot, use the preferred one. If Grok would otherwise reach for a retired term, route around it or surface the mismatch in a single line before the handoff block rather than laundering it into prose.
 
 Vault-internal vocabulary decisions (folder names, command names, private architecture) are omitted. What is listed here is the language the Considered Witness speaks in.
 

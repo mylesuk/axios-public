@@ -1,131 +1,70 @@
 # Quarry guidelines
 
-How Grok acts as pre-filter and router for raw material heading into Axios. This is the document that changes how Grok behaves moment-to-moment; read it carefully.
+How material reaches Axios. This document names **what belongs where** — what Grok bridges, what the author brings directly to Cursor, and what is refused.
 
-## Default entry point: `g-route`
+The architecture is deliberately small: Grok has one job (the X-bridge), Cursor does everything else. Earlier iterations delegated routing to Grok through a family of `g-*` triggers; that proved unreliable for structured multi-lane output, and most non-X material does not need Grok in the loop at all. The retired dispatcher is gone.
 
-The author's preferred path is **`g-route`** — the Grok-side dispatcher. It classifies the material using the decision rules in this document, prints a short plain-prose router note (2–4 lines) naming the chosen lane and why, and then emits the full handoff block for that lane. The specific `g-*` triggers (`g-quarry`, `g-capture`, `g-propose`, `g-draft`, `g-ship`) remain fully supported; they skip the router note and go straight to the handoff. Use `g-route` when the lane is unclear or you want Grok's routing work on audit trail; use direct triggers when the author already knows the lane.
+## Three lanes of raw material
 
-See [`triggers/g-route.md`](triggers/g-route.md) for the router-note shape, the ambiguity path (one clarifying question, no block emitted), and the refusal path (no Axios lane fits — emit an external-route pointer and stop).
-
-## The problem these rules solve
-
-Left to itself, Grok dumps everything to `Quarry/` via `g-quarry`. That is fine when the material is long and unfiltered. It is wasteful when the material is a single good X thread, a distilled chat exchange, or a short article — cases where the author would rather skip Quarry and save a **source** directly, with candidate insights already attached, via `g-capture`.
-
-Grok's pre-filter job: **read the raw material and recommend the right lane**, then produce the single Cursor-ready handoff block for that lane. Every handoff block begins with the matching Cursor slash command (`/quarry`, `/capture`, `/propose`, `/draft`, or `/ship`) so one paste into Cursor auto-invokes the command. `g-route` formalises this routing step; the direct triggers assume the routing is already done.
-
-## Decision rules (apply in order)
-
-1. **Is this a long, unfiltered corpus?** (Full chat transcript, 60-minute YouTube, book chapter, 50-post quote-thread tangle, voice memo.)
-   - Yes: `g-quarry` to Quarry. The goal is preservation; mining happens later.
-
-2. **Is this a polished longform article already drafted in this conversation?** (Not an outline; not notes; not a sketch.)
-   - Yes: `g-draft` to Articles. Voice Intent required (or explicit `SKIP: <reason>`).
-
-3. **Has the author pasted a saved catalog article and asked for packaging?**
-   - Yes: `g-ship` for derivative packaging (Claim-risk band, Carry band, Metadata). The article is authoritative; do not restate its claims.
-
-4. **Is this the author's own original idea about how Axios itself should evolve?** (System architecture, a new product surface, a process change, a documentation pass — forward thinking about the tool, not external material and not a content germ for a future piece.)
-   - Yes: `g-propose` to `Atelier/00-System/proposals/`. Emit Proposal summary, Scope, Key elements, Open questions, Metadata, `Handoff: /propose`.
-
-5. **Is this a single deliberate external pick worth distilling later?** (One X thread with 1–3 real claims; one quote with attribution; one article the author already read and wants saved; one passage from a book — someone *else's* argument.)
-   - Yes: `g-capture` to `Atelier/10-Sources/`. Emit Source summary, Source metadata, Candidate insights, Verbatim passages, Metadata, `Handoff: /capture`.
-
-6. **None of the above?** Surface the ambiguity in a single line before the block. Do not invent a lane. Ask the author which lane to use.
-
-## Naming convention
-
-Grok triggers use a `g-` prefix mirroring Cursor's `/` prefix on the same verbs:
-
-| Grok trigger | Cursor command | Lane |
+| Shape of material | Where it goes | Why |
 |---|---|---|
-| `g-route` | *(dispatcher — delegates to one of the below)* | Default entry point — Grok classifies, prints a router note, then emits the right lane's block |
-| `g-quarry` | `/quarry` | Long / unfiltered corpora → `Quarry/` |
-| `g-capture` | `/capture` | Single deliberate **external** source or a third-party **term** (word mode) → `Atelier/10-Sources/` |
-| `g-propose` | `/propose` | Author's own original idea about Axios → `Atelier/00-System/proposals/` |
-| `g-draft` | `/draft` | Polished longform article → `Atelier/60-Catalog/Articles/` |
-| `g-ship` | `/ship` | Derivative packaging of a saved article → `Atelier/60-Catalog/` |
+| **X content** — threads, posts, quote chains, profiles, replies | Grok → `xbridge` → paste into Cursor | Only grok.com can read X natively. Grok is the bridge. |
+| **Current Grok conversation** — a summary or key exchange worth capturing as a source; a third-party term lookup (word mode) | Grok → `xbridge` → paste into Cursor | Grok is the conversation host; it can produce the handoff block cleanly. |
+| **Everything else** — YouTube transcripts, podcast transcripts, `.srt`/`.vtt` subtitles, Readwise / Kindle / Books highlights exports, chat exports from other models, pasted article text, books, your own drafts, your own proposals for Axios | Paste directly into Cursor | The text is already in your hands. No pre-filter or URL fetch is needed. |
 
-## Pre-filter pass format
+`xbridge` is the *only* Grok trigger. The author is the router for lane 3 — Cursor's commands (`/quarry`, `/capture`, `/distill`, `/draft`, `/ship`, `/propose`, `/reflect`, `/review`, `/sweep`, `/audit`, `/push`) cover the rest of the pipeline.
 
-When the author gives Grok a substantial raw input and asks "what's in this?" (or similar), before any handoff, emit a short pre-filter block:
+## Lane 1 + 2: what `xbridge` emits
 
-```
-**TL;DR**
-<3–5 lines of the raw material's substance, not its topic>
+See [`xbridge.md`](xbridge.md) for the full specification. Summary:
 
-**Candidate insights**
-- <1–2 sentence stub>
-- <1–2 sentence stub>
-- <1–2 sentence stub>   (up to 5, prefer 3)
+- Single triple-backtick fence, no language tag.
+- First line: `/capture` (Cursor auto-fires the command on paste+enter).
+- Body: `**Source summary**` / `**Source metadata**` / `**Candidate insights**` / `**Verbatim passages**` / `**Metadata**` in document mode; a variant with `**Working definition**` / `**Etymology**` / `**Encountered via**` in word mode.
+- Final line: `Handoff: /capture`.
+- Nothing before or after the fence.
 
-**Register check**
-<one line: is this prophetic / disciplined strike / grievance / neutral informational>
+Cursor's `/capture` is tolerant at intake — it strips malformed fence lines, normalizes section headers, infers missing YAML keys from body content, and prompts only for what is genuinely missing. Grok should prefer **best-effort structured markdown** over perfectionism, but must never fabricate.
 
-**Routing recommendation**
-<g-quarry | g-capture | g-draft | g-ship> — <one sentence why>
-```
+## Lane 3: Cursor commands for direct input
 
-Then wait. Do not produce the handoff block until the author confirms the lane.
+| Material | Cursor command | Lands at |
+|---|---|---|
+| Long raw corpus (YouTube transcript, podcast, subtitles, highlights, another model's chat) | `/quarry` | `Quarry/YYYY-MM-DD-{slug}-{source}.md` (gitignored, flat) |
+| Single deliberate passage worth distilling (a quote with attribution, a short article, a passage the author already read) | `/capture` | `Atelier/10-Sources/source-{slug}.md` |
+| An existing source ready to become insight(s) | `/distill` | `Atelier/20-Insights/` + `Atelier/40-Themes/` |
+| A longform article draft | `/draft` | `Atelier/60-Catalog/Articles/` |
+| An already-saved article being packaged into thread + carousel | `/ship` | `Atelier/60-Catalog/{Threads,Carousels}/` |
+| The author's own original idea about how Axios should evolve | `/propose` | `Atelier/00-System/proposals/proposal-{slug}.md` |
+| A dialogic moment of self-clarification | `/reflect` | `Atelier/50-Workshop/Sessions/` |
 
-## When `g-capture` is preferred over `g-quarry`
+Commands accept either interactive input (paste + dialogue) or the single `xbridge` handoff block (for lanes 1 and 2). No separate handoff format exists for the other Cursor commands — paste your own thinking directly and the command will shape it.
 
-Prefer `g-capture` when all three apply:
+## Refusals (lane 1/2 only)
 
-- The material is already a deliberate pick (the author showed Grok one thread, one article, one quote — not a dump).
-- Grok can extract 1–3 atomic claim stubs without padding.
-- The material is short enough to reproduce verbatim passages in the handoff without compressing to uselessness.
+`xbridge` refuses four shapes of material with a short prose line (no fenced block):
 
-`g-capture` now supports two shapes: **document capture** (thread / article / quote / passage) and **word capture** (term / concept the author wants the vault to track — `source-type: word`, `content-id: word-{slug}`, with a `**Working definition**` and `**Encountered via**` line in place of verbatim passages). Word capture is the right lane when the author has been thinking about a term and wants it tracked — including when Grok acted as reference book and surfaced a working definition from training data (flag that provenance honestly on the `**Encountered via**` line and inside the `**Working definition**` block). See the `g-capture` trigger spec for the word-mode block shape.
+1. **External corpus** — *"`xbridge`: external corpus — paste the raw material directly into Cursor and type `/quarry`."*
+2. **Inner work** — *"`xbridge`: inner-work material — route via the Inner Work Bridge in Cursor."*
+3. **Author-as-originator** (narrow — three signals must co-occur) — *"`xbridge`: author-as-originator — you're stating your own term / Axios rule / framing, not capturing third-party material."* Route: `vocabulary.md` / `/propose` / workshop.
+4. **Drafting or derivative packaging** — *"`xbridge`: drafting and packaging run in Cursor, not Grok."*
 
-**Do not** use `g-capture` when the author is **originating content** — coining their own term, stating Axios system rules as if they were "insights", or drafting a framing they're testing as their own contribution. That is not a Source; it is register design / system design. Grok refuses with the `g-capture: author-as-originator — ...` line and the author routes to **vocabulary** (`vocabulary.md`) for a term to adopt or reject, **`g-propose`** for a system change, or **Cursor workshop** for a content germ. The distinction is *originator* vs *requester*: if the author is asking Grok to surface a definition of a third-party concept that exists outside this chat, that is a legitimate word capture.
-
-Prefer `g-quarry` when any apply:
-
-- The material is long, unfiltered, or multi-topic.
-- The material is a full chat transcript (Grok's own or another model's).
-- The author is "feeding material for later mining" rather than picking something worth distilling now.
-- The material is subtitles, transcripts, or Readwise exports.
-
-Neither lane is superior. The point is routing to the right one.
-
-## `g-propose` is the author-idea lane, not a general "ideas" lane
-
-`g-propose` is narrow by design. It is for the author's **own** forward-looking ideas about **Axios itself** — system architecture, product surfaces, process changes, documentation passes. Use it only when all three apply:
-
-- The idea is **the author's own** (developed in conversation with Grok, not lifted from an external source).
-- The idea is **about Axios-the-system** (not a content germ for a future piece, not a life-project idea, not inner-work material).
-- The idea has enough shape to state clearly: what should change, why it is worth the cost, and what breaks.
-
-If any of those three are not true, do **not** emit a `g-propose` block. The correct responses:
-
-- **Content germ** (an argument / hook / thesis for a future article or thread) → surface and recommend routing to `50-Workshop/` as a draft stub in Cursor; do not package as a proposal.
-- **External material** (someone else's argument / thread / article / quote) → re-run as `g-capture`.
-- **Inner work** (personal reflection, relational insight, therapy-adjacent material) → refuse and route to Journal via the Inner Work Bridge.
-- **Life idea** (villa plans, trips, personal projects not about Axios) → surface and recommend Journal with `#idea` tag, or `Axios-Assets/Projects/`.
-
-Proposals live in the vault at `Atelier/00-System/proposals/` as `proposal-{content-id}.md` with `status: draft`. Grok does not see this folder; it only emits the handoff block and trusts Cursor to persist.
+Narrow refusal fires only when the signals combine; any single signal alone (e.g. no URL, empty `source-author`) is not grounds to refuse — many legitimate captures lack one or the other.
 
 ## Do-not-publish rules
 
-Grok must enforce these in every handoff:
+These are enforced on every `xbridge` output:
 
-1. **Never fabricate Voice Intent.** If the author has not supplied it, emit `SKIP: <reason>`.
-2. **Never claim files were saved.** Grok emits handoff blocks; Cursor writes files. Phrases like "saved to" or "I wrote this to" are prohibited.
-3. **Never surface Journal material.** Journal is private. Even if a Journal-sounding passage is pasted, treat it as inner-work lane and refuse to publish — ask the author whether they intend to promote it through the Inner Work Bridge explicitly.
-4. **Never invent facts, quotes, dates, or attributions.** If the source is ambiguous or the claim cannot be verified in-chat, mark it and downgrade the lane (from `g-draft` to `g-capture`, or from `g-capture` to `g-quarry`).
-5. **Never laundr drift into grievance.** If the source material pulls the draft toward grievance register, surface that in the pre-filter block rather than producing a polished handoff. Offer the prophetic rewrite instead.
-6. **Never output a handoff block with commentary around it.** The handoff is the entire output. One fenced block whose first line is the matching `/command`, no preamble.
+1. **Never fabricate.** URLs, authors, dates, passages, candidate insights — honest substance or `SKIP: <reason>`.
+2. **Never claim a file was saved.** Grok emits blocks; Cursor writes files.
+3. **Never surface Journal material.** Inner-work material reaches Atelier only through the Inner Work Bridge ceremony inside Cursor.
+4. **Never put prose outside the fence.** No router note, no pre-filter sections, no follow-up questions.
+5. **Never launder drift into grievance.** Default register on civilizational topics is prophetic; refuse grievance.
 
-## The security note that matters
+## Template-safety note
 
-Axios's vault has Templater configured to execute template commands on new file creation in some folders. This means arbitrary markdown dropped into the vault can run code. Grok's handoff blocks should therefore:
-
-- Contain only plain markdown and YAML; no `<% ... %>` template tags, no `eval` payloads, no JavaScript.
-- Never include content the author has not knowingly asked Grok to produce.
-
-If a source contains what looks like template syntax, quote-escape it or note it inline rather than reproducing it verbatim in a handoff block.
+Axios's vault has Templater configured to execute template commands on new file creation in some folders. Handoff blocks should contain only plain markdown and YAML — no `<% ... %>` template tags, no JavaScript, no `eval` payloads. If a source contains template-like syntax, quote-escape it or note it inline.
 
 ## What success looks like
 
-The author pastes a raw input. Grok reads it, produces a four-block pre-filter pass, the author confirms the lane, Grok emits one clean fenced handoff block starting with the matching `/command`, the author clicks the code-block copy button and pastes into Cursor. Cursor invokes the command on paste+enter. Zero cleanup. Zero invention. One round trip per artifact.
+The author pastes (or discusses) X content in Grok. Types `xbridge`. Grok emits one clean fenced block beginning with `/capture`. The author clicks the code-block copy button, pastes into Cursor, and Cursor's `/capture` fires — tolerance pass runs, source saves, distillation waits its turn. Zero cleanup. Zero invention. One round trip per artifact. For everything else, Cursor is already open — paste directly and type the right command.

@@ -15,34 +15,36 @@ The shared rules Grok should follow when producing metadata and handoff blocks. 
 
 ## Handoff block shape
 
-Every Grok trigger (`g-quarry`, `g-capture`, `g-draft`, `g-ship`) emits a single fenced markdown code block whose **first line is the matching Cursor slash command** (`/quarry`, `/capture`, `/draft`, or `/ship`) followed by a blank line and then the handoff body. The author clicks the code-block copy button on grok.com (which strips the outer backticks), pastes into Cursor, and presses enter — the command auto-invokes with the rest of the block as input. No second step.
-
-The `g-` prefix on Grok triggers mirrors the `/` prefix on Cursor commands. Same verbs, different platforms.
+Grok has one trigger: `xbridge`. It emits a single fenced markdown code block whose **first line is `/capture`**, followed by a blank line and the handoff body. The author clicks the code-block copy button on grok.com (which strips the outer backticks), pastes into Cursor, and presses enter — Cursor's `/capture` auto-invokes and runs a tolerance pass on intake. No second step.
 
 ## File naming (what Grok output implies)
 
-Grok does not write files. Cursor commands write files based on handoff metadata. Grok's job is to produce metadata that results in the right path.
+Grok does not write files. Cursor commands write files based on handoff metadata. Grok's `xbridge` job is to produce metadata that results in the right path at `Atelier/10-Sources/`; everything downstream (drafting, packaging) happens in Cursor directly.
 
-| Target | Path pattern | Metadata that drives it |
-|--------|--------------|-------------------------|
-| Quarry dump | `Quarry/YYYY-MM-DD-{topic}-grok.md` | `g-quarry` frontmatter with `date`, `topic` |
-| Atelier source | `Atelier/10-Sources/source-{slug}.md` | `g-capture` metadata `content-id` |
-| Article | `Atelier/60-Catalog/Articles/YYYY-MM-DD-{content-id}.md` | `g-draft` metadata `content-id`, `ship-date` |
-| Thread (derivative) | `Atelier/60-Catalog/Threads/YYYY-MM-DD-{content-id}.md` | `g-ship` metadata `content-id`, `ship-date` |
-| Carousel (derivative) | `Atelier/60-Catalog/Carousels/YYYY-MM-DD-{content-id}.md` | `g-ship` metadata `content-id`, `ship-date` |
+| Target | Path pattern | Where the metadata comes from |
+|--------|--------------|-------------------------------|
+| Atelier source (document mode) | `Atelier/10-Sources/source-{slug}.md` | `xbridge` handoff Metadata `content-id` |
+| Canon Word encounter (word mode) | `Atelier/30-Canon/Words/canon-word-{slug}.md` | `xbridge` handoff Metadata `content-id` prefixed `word-` |
+| Quarry dump | `Quarry/YYYY-MM-DD-{topic}-{source}.md` | Author's direct paste into Cursor `/quarry`; no Grok |
+| Article | `Atelier/60-Catalog/Articles/YYYY-MM-DD-{content-id}.md` | Author-drafted in Cursor via `/draft` |
+| Thread (derivative) | `Atelier/60-Catalog/Threads/YYYY-MM-DD-{content-id}.md` | Author-packaged in Cursor via `/ship` |
+| Carousel (derivative) | `Atelier/60-Catalog/Carousels/YYYY-MM-DD-{content-id}.md` | Author-packaged in Cursor via `/ship` |
 
 ## Metadata keys (canonical shape)
 
-Used across `g-capture`, `g-draft`, and `g-ship`:
+Used in the `xbridge` handoff Metadata block:
 
-- `content-id:` — kebab-case slug, stable, aligned with the core thesis.
+- `content-id:` — kebab-case slug, stable, aligned with the core thesis (prefixed `word-` for term captures).
 - `main-topic:` — short human-readable topic, 2–6 words.
-- `tags:` — YAML inline list, 3–7 kebab-case tokens.
-- `ship-date:` — `YYYY-MM-DD`. Required for `g-ship`, optional for `g-draft`, not used in `g-capture` (sources are timeless).
+- `tags:` — YAML inline list, 3–7 kebab-case tokens. Always include `source` (and `word` in word mode).
+
+Additional keys used in Cursor-side commands (`/draft`, `/ship`) on the author's side, not Grok's:
+
+- `ship-date:` — `YYYY-MM-DD`. Required for `/ship`, optional for `/draft`.
 - `title:` *(optional)* — final title if distinct from `content-id`.
 - `deck:` *(optional)* — one-sentence subtitle.
 - `series:` *(optional)* — e.g. `truth-over-time`.
-- `source:` *(optional on g-draft)* — canonical URL, normalized (strip `s`, `twclid`, `utm_*`, `ref` parameters).
+- `source:` *(optional on `/draft`)* — canonical URL, normalized (strip `s`, `twclid`, `utm_*`, `ref` parameters).
 
 When a block includes a `Truth over Time` section, its keys (`historical-anchor`, `modern-anchor`, `historical-relevance`, `present-relevance`, `fracture-line`) are filled from the conversation; never invented.
 
@@ -56,9 +58,9 @@ For any note Grok generates body text for:
 
 Spaced em dash between date and title. Title as the author would write it, capitalization preserved; not slugified.
 
-## Voice Intent card (g-draft)
+## Voice Intent card (used by `/draft` in Cursor)
 
-Required on `g-draft` handoffs:
+Required on any longform article body saved via `/draft`:
 
 ```
 **Voice Intent**
@@ -69,13 +71,13 @@ Required on `g-draft` handoffs:
 
 Optional line: `- **My read:** <one-sentence author self-read>`.
 
-**Never fabricate Voice Intent.** If the author has not supplied it in-chat, emit `SKIP: <reason>` instead of a Voice Intent card.
+**Never fabricate Voice Intent.** If the author has not supplied it, `/draft` records `SKIP: <reason>` rather than invention. Voice Intent is not part of the `xbridge` handoff — drafting and voice decisions happen in Cursor.
 
 The earlier field names (`Edge` / `No-soften zone`) are retired — see [`vocabulary.md`](vocabulary.md) for the reasoning. Treat any pasted Voice Intent using the old field names as equivalent: `Edge` → `Thesis`, `No-soften zone` → `Non-negotiables`.
 
 ## Sourcing
 
-For article bodies (`g-draft`) and longform pieces:
+For article bodies and longform pieces (drafted in Cursor via `/draft`):
 
 - Cite URLs where available. Prefer canonical and permalink forms.
 - Date-stamp quotations where the original carries a date.
