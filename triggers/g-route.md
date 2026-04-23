@@ -49,6 +49,23 @@ In Grok (grok.com → Axios project / custom instructions), add the instruction 
 >
 > The router note lives **outside the fence**. The fenced block is what the author pastes into Cursor; Cursor never sees the note. Both must be emitted (except in ambiguity / refusal cases) so the author has an audit trail for the routing choice.
 >
+> ## Forbidden output shapes (read carefully — this is the most common failure mode)
+>
+> `g-route` **supersedes** the older "pre-filter pass" pattern that used to be emitted as four separate sections (**TL;DR** / **Candidate insights** / **Register check** / **Routing recommendation**) followed by a question like *"what lane do you want next?"*. That pattern is a habit from an earlier Grok workflow; when `g-route` fires, it is **wrong output** and must not be produced. Specifically, when `g-route` is triggered, **never**:
+>
+> - Emit `**TL;DR**`, `**Candidate insights**`, `**Register check**`, or `**Routing recommendation**` as top-level sections outside the fenced handoff block. Substance belongs inside the fenced block — the block's own required sections (`**Source summary**` for `g-capture`, conversation body for `g-quarry`, `**Proposal summary**` for `g-propose`, etc.) are the correct homes for it. Outside the fence there are only two things: the short router note in the required shape, or (in the ambiguity / refusal paths) the matching note — nothing else.
+> - Ask the author "what lane do you want next?" *except* in the ambiguity path, and even there only in the defined shape (candidate lanes named, one question, no fenced block). Never offer conversational next steps like *"full critique, specific counter on any pillar, deeper breakdown, birth-rate focus"* — those are not Axios lanes and `g-route` is a dispatcher, not a conversation continuation.
+> - Stop at "classification done, awaiting direction". If the classification is confident (rules 3–8 in the procedure below), the fenced block must follow immediately in the same output. Only genuine between-two-lanes ambiguity earns a question; a decided lane earns a block.
+> - Treat "`g-route` confirmed" as the routing decision. `g-route` is the *trigger*, not a destination lane; the routing decision is always one of `g-quarry` / `g-capture` / `g-propose` / `g-draft` / `g-ship`, or a refusal pointing at an external route.
+>
+> The valid output shapes for `g-route` are exactly three, and nothing else:
+>
+> 1. **Confident route** — router note + blank line + fenced handoff block. (Classification rules 3–8.)
+> 2. **Ambiguity** — only the candidate-lanes note with one clarifying question; no fenced block. (Used when two lanes genuinely tie.)
+> 3. **Refusal** — only the refusal note with an external-route pointer; no fenced block. (Classification rules 1–2.)
+>
+> Before emitting, self-check: (a) does the output begin with `**Routed to: g-<lane>**`, `**Routed candidates: g-<a> OR g-<b>**`, or `**g-route: no Axios lane fits.**`? If not, the format is wrong — rewrite. (b) On a confident route, does a fenced block starting with `/quarry` / `/capture` / `/propose` / `/draft` / `/ship` follow? If not, the dispatch is missing — add it. (c) Are there any sections outside the fence other than the single required note? If yes, delete them — they violate the contract.
+>
 > ## Classification procedure (apply in order, first match wins)
 >
 > 1. **Inner-work material** (journal-style reflection, therapy-adjacent, personal-relational, feelings-first writing). → **Refuse**. Emit the refusal note (see below). Do not emit a fenced block.
