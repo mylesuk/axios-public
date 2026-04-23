@@ -19,10 +19,13 @@ Grok's pre-filter job: **read the raw material and recommend the right lane**, t
 3. **Has the author pasted a saved catalog article and asked for packaging?**
    - Yes: `g-ship` for derivative packaging (Claim-risk band, Carry band, Metadata). The article is authoritative; do not restate its claims.
 
-4. **Is this a single deliberate pick worth distilling later?** (One X thread with 1–3 real claims; one quote with attribution; one article the author already read and wants saved; one passage from a book.)
+4. **Is this the author's own original idea about how Axios itself should evolve?** (System architecture, a new product surface, a process change, a documentation pass — forward thinking about the tool, not external material and not a content germ for a future piece.)
+   - Yes: `g-propose` to `Atelier/00-System/proposals/`. Emit Proposal summary, Scope, Key elements, Open questions, Metadata, `Handoff: /propose`.
+
+5. **Is this a single deliberate external pick worth distilling later?** (One X thread with 1–3 real claims; one quote with attribution; one article the author already read and wants saved; one passage from a book — someone *else's* argument.)
    - Yes: `g-capture` to `Atelier/10-Sources/`. Emit Source summary, Source metadata, Candidate insights, Verbatim passages, Metadata, `Handoff: /capture`.
 
-5. **None of the above?** Surface the ambiguity in a single line before the block. Do not invent a lane. Ask the author which lane to use.
+6. **None of the above?** Surface the ambiguity in a single line before the block. Do not invent a lane. Ask the author which lane to use.
 
 ## Naming convention
 
@@ -31,7 +34,8 @@ Grok triggers use a `g-` prefix mirroring Cursor's `/` prefix on the same verbs:
 | Grok trigger | Cursor command | Lane |
 |---|---|---|
 | `g-quarry` | `/quarry` | Long / unfiltered corpora → `Quarry/` |
-| `g-capture` | `/capture` | Single deliberate source → `Atelier/10-Sources/` |
+| `g-capture` | `/capture` | Single deliberate **external** source → `Atelier/10-Sources/` |
+| `g-propose` | `/propose` | Author's own original idea about Axios → `Atelier/00-System/proposals/` |
 | `g-draft` | `/draft` | Polished longform article → `Atelier/60-Catalog/Articles/` |
 | `g-ship` | `/ship` | Derivative packaging of a saved article → `Atelier/60-Catalog/` |
 
@@ -73,6 +77,23 @@ Prefer `g-quarry` when any apply:
 - The material is subtitles, transcripts, or Readwise exports.
 
 Neither lane is superior. The point is routing to the right one.
+
+## `g-propose` is the author-idea lane, not a general "ideas" lane
+
+`g-propose` is narrow by design. It is for the author's **own** forward-looking ideas about **Axios itself** — system architecture, product surfaces, process changes, documentation passes. Use it only when all three apply:
+
+- The idea is **the author's own** (developed in conversation with Grok, not lifted from an external source).
+- The idea is **about Axios-the-system** (not a content germ for a future piece, not a life-project idea, not inner-work material).
+- The idea has enough shape to state clearly: what should change, why it is worth the cost, and what breaks.
+
+If any of those three are not true, do **not** emit a `g-propose` block. The correct responses:
+
+- **Content germ** (an argument / hook / thesis for a future article or thread) → surface and recommend routing to `50-Workshop/` as a draft stub in Cursor; do not package as a proposal.
+- **External material** (someone else's argument / thread / article / quote) → re-run as `g-capture`.
+- **Inner work** (personal reflection, relational insight, therapy-adjacent material) → refuse and route to Journal via the Inner Work Bridge.
+- **Life idea** (villa plans, trips, personal projects not about Axios) → surface and recommend Journal with `#idea` tag, or `Axios-Assets/Projects/`.
+
+Proposals live in the vault at `Atelier/00-System/proposals/` as `proposal-{content-id}.md` with `status: draft`. Grok does not see this folder; it only emits the handoff block and trusts Cursor to persist.
 
 ## Do-not-publish rules
 

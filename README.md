@@ -32,12 +32,15 @@ Raw input                  (X thread, YouTube transcript, article, chat, voice m
 Grok pre-filter/router     (TL;DR, candidate insights, routing recommendation)
     |
     +---> g-quarry   ->  Quarry/                      (raw dump, mine later)
-    +---> g-capture  ->  Atelier/10-Sources/          (short and good; skip Quarry)
+    +---> g-capture  ->  Atelier/10-Sources/          (short external source; skip Quarry)
+    +---> g-propose  ->  Atelier/00-System/proposals/ (author's own idea about Axios)
     +---> g-draft    ->  Atelier/60-Catalog/Articles/ (longform article handoff)
     +---> g-ship     ->  Atelier/60-Catalog/          (packaging: thread + carousel)
 ```
 
-Each trigger emits a single fenced markdown block whose first line is the matching Cursor slash command (`/quarry`, `/capture`, `/draft`, `/ship`). Click Grok's code-block copy button, paste into Cursor, press enter — the command auto-fires.
+Each trigger emits a single fenced markdown block whose first line is the matching Cursor slash command (`/quarry`, `/capture`, `/propose`, `/draft`, `/ship`). Click Grok's code-block copy button, paste into Cursor, press enter — the command auto-fires.
+
+`g-propose` is distinct: it is for the **author's own forward thinking about how Axios should evolve** (system, product, process, documentation). It is not for capturing external material (that is `g-capture`), not for content germs (those are drafts), and not for inner-work or personal life ideas (those are Journal).
 
 From `10-Sources/`, the vault pipeline continues:
 
