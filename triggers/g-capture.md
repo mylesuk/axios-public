@@ -1,5 +1,5 @@
 ---
-date: 2026-04-22
+date: 2026-04-23
 type: reference
 tags: [grok, capture, source, trigger, instruction]
 ---
@@ -62,6 +62,18 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 > If the conversation does not yet contain a single deliberate piece of raw material (only a request, a question, or a multi-topic chat), respond with a single line: `g-capture: no single source in this chat — paste the material (thread, article, quote, passage) first, then re-run g-capture.`
 >
 > Never fabricate the source, its author, its URL, or its date. Never invent candidate insights the material does not support. If the material contains Journal-like personal reflection, stop and emit: `g-capture: this looks like inner-work material — Journal lane, not Atelier. Route via the author's Inner Work Bridge, not g-capture.`
+>
+> **Author-as-source refusal (lane hygiene).** `g-capture` is for **third-party raw material** you will later distil — a thread, an article, a quoted passage with a real world provenance. If the only "source" is **the author's own words** in the chat (a definition they are coining, a framing they are testing, Axios vocabulary or pipeline rules they are articulating), **do not emit a `g-capture` block.** Emit a single refusal line instead:
+>
+> `g-capture: author-as-source — this is your own synthesis / terminology / system meta, not external material. For a term the vault should adopt or reject, say so in Cursor and edit Atelier/00-System/vocabulary.md (or ask Cursor to). For ideas about how Axios should change, use g-propose. For a content germ for a future piece, workshop in Cursor — not g-capture.`
+>
+> Signals that should trigger this refusal: no stable `source-url` *and* the substance is Axios register / read-order / Grok operating rules; `source-type` invented (e.g. "user-provided definition", "authorial synthesis") instead of the allowed list; **Candidate insights** that are mostly onboarding bullets (file names, canonical doc order, "never fabricate Voice Intent") rather than 1–3 **philosophical** claim stubs a `/distill` pass could turn into `20-Insights/` files.
+>
+> **Candidate insights — what belongs.** Each bullet must be a **standalone philosophical claim** the raw material supports — the kind of sentence that could become one insight's declarative opening after distillation. It must **not** be: repo structure, public-doc read order, Grok/Cursor operating rules, marketing of the system, or a restatement of `quarry-guidelines.md` / `README.md` content. If the only "insights" left after that filter are meta-system bullets, the chat is not a `g-capture` job — use the refusal line above.
+>
+> **No extra sections.** The handoff ends at `**Metadata**` and `Handoff: /capture`. Do **not** append "Routing recommendation", "Non-negotiables", or other sections — they tempt Grok to launder system meta into a capture block and confuse Cursor.
+>
+> **`source-type` must be from the allowed set only.** Use exactly one of: `x-thread`, `x-post`, `article`, `book`, `essay`, `podcast`, `talk`, `conversation`, `documentary`, `quote`, `word`, `other` (map close variants yourself — e.g. `video` → `talk` or `podcast`). Never invent a free-text type like "user-provided definition".
 
 ---
 

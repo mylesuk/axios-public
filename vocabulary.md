@@ -25,6 +25,7 @@ Vault-internal vocabulary decisions (folder names, command names, private archit
 | **Compounding quality** | Faster loop, ship faster | Axios is run as a multi-decade project. The ROI rule is compounding returns across years, not round-trip speed this week. |
 | **Fracture-line** | Weakness, caveat, hedge | A *fracture-line* is the honest seam of the argument, named on purpose. A caveat can be performative; a fracture-line is structural. |
 | **Truth-over-Time anchor** | Classical reference, classical quote | *Anchor* names the function — it holds the claim across time. A reference or a quote can be decorative; an anchor does load-bearing work. |
+| **Truth-over-Time** (the lens; pair with **Truth-over-Time anchor** for the Canon tie) | Timeless principles | *Timeless principles* names the same territory as **Truth-over-Time** in vaguer, ambient philosophical language. Two names for one concept invite register drift. In handoffs, metadata, and system-facing prose, use **Truth-over-Time**; in ordinary life prose, *timeless* is fine when it is not being offered as a second system term. |
 | **Considered** (voice root) | Edgy, provocative, bold | The work is considered. Edge / provocation is downstream of clarity, not upstream. |
 
 ## Phrases to retire wholesale
@@ -37,6 +38,7 @@ If any of these appear in a handoff, the register has drifted.
 - "Personal brand" — Axios has a *persona* and a *positioning*. "Personal brand" is the wrong frame.
 - "Value-add", "value-prop" — consulting register.
 - "High-value content", "content piece" when *piece* alone is clearer.
+- "Timeless principles" as **Axios vocabulary for the lens** — use **Truth-over-Time** (and **Truth-over-Time anchor** for the load-bearing classical tie).
 
 ## Terms to preserve (even when they feel out of register)
 

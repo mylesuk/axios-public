@@ -69,6 +69,8 @@ Prefer `g-capture` when all three apply:
 - Grok can extract 1–3 atomic claim stubs without padding.
 - The material is short enough to reproduce verbatim passages in the handoff without compressing to uselessness.
 
+**Do not** use `g-capture` when the "material" is **only the author's own synthesis** (defining a term, testing a frame, stating Axios rules or read order) with **no third-party URL or quoted external text** as provenance. That is not a Source — it blurs capture with register design. In those cases Grok refuses with the `g-capture: author-as-source — ...` line (see the `g-capture` trigger spec). The author routes to **vocabulary** (`vocabulary.md`), **`g-propose`** (if it is a system change), or **Cursor workshop** — not `Atelier/10-Sources/`.
+
 Prefer `g-quarry` when any apply:
 
 - The material is long, unfiltered, or multi-topic.
