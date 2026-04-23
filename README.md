@@ -19,26 +19,26 @@ The **private vault** (`Axios/`) contains journals, therapy, inquiry, raw corpor
 5. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.
 6. [`conventions.md`](conventions.md) — slugs, metadata, filename rules.
 7. [`quarry-guidelines.md`](quarry-guidelines.md) — how Grok acts as pre-filter and router.
-8. [`triggers/`](triggers/) — the `g-*` contracts.
+8. [`triggers/`](triggers/) — the `g-*` contracts. Start with [`g-route.md`](triggers/g-route.md) (default dispatcher); the direct-lane triggers (`g-quarry`, `g-capture`, `g-propose`, `g-draft`, `g-ship`) remain fully supported for when the author already knows the lane.
 
 ## Pipeline at a glance
 
 Raw material flows one direction. Nothing skips stages.
 
 ```
-Raw input                  (X thread, YouTube transcript, article, chat, voice memo)
+Raw input                  (X thread, YouTube transcript, article, chat, voice memo, term)
     |
     v
-Grok pre-filter/router     (TL;DR, candidate insights, routing recommendation)
+g-route (default)          Grok classifies, prints a router note, delegates to:
     |
     +---> g-quarry   ->  Quarry/                      (raw dump, mine later)
-    +---> g-capture  ->  Atelier/10-Sources/          (short external source; skip Quarry)
+    +---> g-capture  ->  Atelier/10-Sources/          (short external source, or word mode)
     +---> g-propose  ->  Atelier/00-System/proposals/ (author's own idea about Axios)
     +---> g-draft    ->  Atelier/60-Catalog/Articles/ (longform article handoff)
     +---> g-ship     ->  Atelier/60-Catalog/          (packaging: thread + carousel)
 ```
 
-Each trigger emits a single fenced markdown block whose first line is the matching Cursor slash command (`/quarry`, `/capture`, `/propose`, `/draft`, `/ship`). Click Grok's code-block copy button, paste into Cursor, press enter — the command auto-fires.
+`g-route` is the default entry point — use it when the lane is not obvious. The direct `g-*` triggers remain available for when the author already knows the lane; they skip the router note and go straight to the handoff. Each direct trigger emits a single fenced markdown block whose first line is the matching Cursor slash command (`/quarry`, `/capture`, `/propose`, `/draft`, `/ship`). Click Grok's code-block copy button, paste into Cursor, press enter — the command auto-fires.
 
 `g-propose` is distinct: it is for the **author's own forward thinking about how Axios should evolve** (system, product, process, documentation). It is not for capturing external material (that is `g-capture`), not for content germs (those are drafts), and not for inner-work or personal life ideas (those are Journal).
 

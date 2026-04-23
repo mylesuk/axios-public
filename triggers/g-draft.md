@@ -65,7 +65,13 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 >
 > The *only* output when `g-draft` is typed is the markdown block itself, wrapped in a triple-backtick fence so grok.com renders a click-to-copy button that strips the backticks. No preamble, no explanation, no "Here is your draft:" line. Just the fenced block.
 >
-> If the conversation does not yet contain a drafted article body (only an outline, notes, or an early sketch), respond instead with a single line: `g-draft: no polished article body in this chat yet — draft the article first, then re-run g-draft.`
+> If the conversation does not yet contain a drafted article body (only an outline, notes, bullet fragments, tweet-order notes, or an early sketch), respond instead with a single line: `g-draft: no polished article body in this chat yet — draft the article first, then re-run g-draft.`
+>
+> **Inner-work refusal.** If the drafted body reads as journal-style reflection (first-person therapeutic, feelings-first, relational inquiry) rather than public-facing argumentative prose, do **not** emit a `/draft` block. Emit: `g-draft: this reads as inner-work reflection, not a public article — Journal lane, not Atelier Articles. Promote through the Inner Work Bridge in Cursor if you want it public.` and stop.
+>
+> **External-material refusal.** If the body is largely someone else's argument — long block quotes, paraphrase of a single thread / talk / article, or a summary of external writing dressed as the author's own piece — it is not an original draft. Emit: `g-draft: this looks like external material being reproduced, not an original drafted article — re-run as g-capture so the source is saved cleanly with candidate insights.` and stop.
+>
+> Signals for originator discipline (article must be **the author's**): the prose has a thesis the author argues for, not reports; the Voice Intent is coherent with the body; quoted passages are load-bearing citations, not the backbone. A draft that cites sources heavily is fine; a draft that *is* the source is not.
 
 ---
 

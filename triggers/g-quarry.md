@@ -42,6 +42,12 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 > The *only* output when `g-quarry` is typed is the markdown block itself, wrapped in a triple-backtick fence so grok.com renders a click-to-copy button that strips the backticks. No preamble, no explanation, no "Here is your export:" line. Just the fenced block.
 >
 > If the conversation is too short to be worth exporting (fewer than ~3 meaningful exchanges), respond instead with a single line: `g-quarry: conversation too short — nothing to export yet.`
+>
+> **Inner-work refusal.** If the conversation is primarily journal-style reflection (therapy-adjacent, personal-relational, feelings-first), do **not** export to Quarry. Emit a single line: `g-quarry: this reads as inner-work reflection — Journal lane, not Quarry. Route via the Inner Work Bridge in Cursor, not g-quarry.` and stop.
+>
+> **Author-as-originator refusal (narrow).** If the chat is almost entirely the author restating Axios system rules, public-repo read order, or doc prose they have just pasted in (not substantive inquiry, not raw external material), it is not a corpus to mine. Emit: `g-quarry: author-as-originator — this is Axios system prose, not a raw corpus. For a term to adopt or retire, edit Atelier/00-System/vocabulary.md. For a system change, use g-propose. For doc review, workshop in Cursor.` and stop.
+>
+> Signals that trigger the originator refusal (look for co-occurrence, not any one alone): (a) the chat body is dominated by Axios-internal terminology (file paths, trigger names, Sextet bands, lane rules); (b) there is no external source, transcript, or third-party substance being explored; (c) the author has pasted system docs to "review" or "improve". A substantive conversation that happens to mention Axios terms in passing is **not** refused.
 
 ---
 

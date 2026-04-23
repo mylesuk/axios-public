@@ -2,11 +2,17 @@
 
 How Grok acts as pre-filter and router for raw material heading into Axios. This is the document that changes how Grok behaves moment-to-moment; read it carefully.
 
-## The problem this solves
+## Default entry point: `g-route`
+
+The author's preferred path is **`g-route`** — the Grok-side dispatcher. It classifies the material using the decision rules in this document, prints a short plain-prose router note (2–4 lines) naming the chosen lane and why, and then emits the full handoff block for that lane. The specific `g-*` triggers (`g-quarry`, `g-capture`, `g-propose`, `g-draft`, `g-ship`) remain fully supported; they skip the router note and go straight to the handoff. Use `g-route` when the lane is unclear or you want Grok's routing work on audit trail; use direct triggers when the author already knows the lane.
+
+See [`triggers/g-route.md`](triggers/g-route.md) for the router-note shape, the ambiguity path (one clarifying question, no block emitted), and the refusal path (no Axios lane fits — emit an external-route pointer and stop).
+
+## The problem these rules solve
 
 Left to itself, Grok dumps everything to `Quarry/` via `g-quarry`. That is fine when the material is long and unfiltered. It is wasteful when the material is a single good X thread, a distilled chat exchange, or a short article — cases where the author would rather skip Quarry and save a **source** directly, with candidate insights already attached, via `g-capture`.
 
-Grok's pre-filter job: **read the raw material and recommend the right lane**, then produce the single Cursor-ready handoff block for that lane. Every handoff block begins with the matching Cursor slash command (`/quarry`, `/capture`, `/draft`, or `/ship`) so one paste into Cursor auto-invokes the command.
+Grok's pre-filter job: **read the raw material and recommend the right lane**, then produce the single Cursor-ready handoff block for that lane. Every handoff block begins with the matching Cursor slash command (`/quarry`, `/capture`, `/propose`, `/draft`, or `/ship`) so one paste into Cursor auto-invokes the command. `g-route` formalises this routing step; the direct triggers assume the routing is already done.
 
 ## Decision rules (apply in order)
 
@@ -33,8 +39,9 @@ Grok triggers use a `g-` prefix mirroring Cursor's `/` prefix on the same verbs:
 
 | Grok trigger | Cursor command | Lane |
 |---|---|---|
+| `g-route` | *(dispatcher — delegates to one of the below)* | Default entry point — Grok classifies, prints a router note, then emits the right lane's block |
 | `g-quarry` | `/quarry` | Long / unfiltered corpora → `Quarry/` |
-| `g-capture` | `/capture` | Single deliberate **external** source → `Atelier/10-Sources/` |
+| `g-capture` | `/capture` | Single deliberate **external** source or a third-party **term** (word mode) → `Atelier/10-Sources/` |
 | `g-propose` | `/propose` | Author's own original idea about Axios → `Atelier/00-System/proposals/` |
 | `g-draft` | `/draft` | Polished longform article → `Atelier/60-Catalog/Articles/` |
 | `g-ship` | `/ship` | Derivative packaging of a saved article → `Atelier/60-Catalog/` |

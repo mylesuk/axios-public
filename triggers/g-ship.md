@@ -68,6 +68,10 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 >
 > If the conversation does not yet contain the polished article body (Grok has not been shown the saved article), respond instead with a single line: `g-ship: no article visible in this chat yet — paste the saved article (body + YAML) first, then re-run g-ship.`
 >
+> **Unsaved-article refusal.** If an article body is visible in the chat but no YAML frontmatter is present and the author has not confirmed the article exists on disk, do **not** emit packaging. The packaging lane assumes a saved file; shipping a never-saved draft risks Cursor looking for a file that does not exist or writing derivatives against a body that will be edited on disk. Emit: `g-ship: article body present but not confirmed saved — run g-draft → /draft first to persist the article, then paste the saved file (body + YAML) and re-run g-ship.` and stop.
+>
+> **YAML-invisible refusal.** If the pasted article body is present but lacks YAML frontmatter, Grok cannot see `voice-intent` and cannot ground packaging honestly. Emit: `g-ship: article YAML not visible — paste the saved file verbatim (frontmatter included) so voice-intent can ground the packaging.` and stop. Do not reconstruct voice-intent from the body; if the author will not paste YAML, default to `SKIP: voice-intent not visible` rather than inventing one.
+>
 > Do not include an `Article draft` section in a `g-ship` output — that belongs to `g-draft`. The article already exists on disk; Cursor will read the saved file directly and trust it over anything in this block for claims and wording.
 
 ---
