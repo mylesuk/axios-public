@@ -63,17 +63,81 @@ In Grok (grok.com → your project / custom instructions), add the instruction b
 >
 > Never fabricate the source, its author, its URL, or its date. Never invent candidate insights the material does not support. If the material contains Journal-like personal reflection, stop and emit: `g-capture: this looks like inner-work material — Journal lane, not Atelier. Route via the author's Inner Work Bridge, not g-capture.`
 >
-> **Author-as-source refusal (lane hygiene).** `g-capture` is for **third-party raw material** you will later distil — a thread, an article, a quoted passage with a real world provenance. If the only "source" is **the author's own words** in the chat (a definition they are coining, a framing they are testing, Axios vocabulary or pipeline rules they are articulating), **do not emit a `g-capture` block.** Emit a single refusal line instead:
+> **Author-as-originator refusal (narrow — not the same as author-as-requester).** `g-capture` captures **third-party material** you will later distil. There is one shape of input it must refuse: content the author is **originating in-chat** — coining a new term of their own, stating Axios system rules, drafting a framing they're testing as their own contribution. Refuse with:
 >
-> `g-capture: author-as-source — this is your own synthesis / terminology / system meta, not external material. For a term the vault should adopt or reject, say so in Cursor and edit Atelier/00-System/vocabulary.md (or ask Cursor to). For ideas about how Axios should change, use g-propose. For a content germ for a future piece, workshop in Cursor — not g-capture.`
+> `g-capture: author-as-originator — you're stating your own term / Axios rule / framing, not capturing third-party material. For a term you want the vault to adopt or reject, edit Atelier/00-System/vocabulary.md (ask Cursor). For an Axios change idea, use g-propose. For a content germ, workshop in Cursor.`
 >
-> Signals that should trigger this refusal: no stable `source-url` *and* the substance is Axios register / read-order / Grok operating rules; `source-type` invented (e.g. "user-provided definition", "authorial synthesis") instead of the allowed list; **Candidate insights** that are mostly onboarding bullets (file names, canonical doc order, "never fabricate Voice Intent") rather than 1–3 **philosophical** claim stubs a `/distill` pass could turn into `20-Insights/` files.
+> Do **not** refuse when the author is **requesting a reference on a third-party concept** that exists outside this chat (a philosophical term, theological term, linguistic root, historical concept). That is a legitimate capture — use **word mode** below.
 >
-> **Candidate insights — what belongs.** Each bullet must be a **standalone philosophical claim** the raw material supports — the kind of sentence that could become one insight's declarative opening after distillation. It must **not** be: repo structure, public-doc read order, Grok/Cursor operating rules, marketing of the system, or a restatement of `quarry-guidelines.md` / `README.md` content. If the only "insights" left after that filter are meta-system bullets, the chat is not a `g-capture` job — use the refusal line above.
+> Signals that trigger author-as-originator refusal (**all three roughly together**, not any one alone): (a) the concept has no referent outside this chat — it lives only because the author just defined it; (b) `source-author` would be the author themselves with no external citation; (c) the bullets you would emit are Axios operating rules, public-repo read order, or file / folder names — not philosophical claims that could become `20-Insights/` files. One of those signals in isolation (e.g. no URL) is **not** grounds to refuse — many legitimate captures lack URLs.
 >
-> **No extra sections.** The handoff ends at `**Metadata**` and `Handoff: /capture`. Do **not** append "Routing recommendation", "Non-negotiables", or other sections — they tempt Grok to launder system meta into a capture block and confuse Cursor.
+> **Candidate insights — what belongs.** Each bullet must be a **standalone philosophical claim** the raw material supports — the kind of sentence that could become one insight's declarative opening after distillation. It must **not** be: repo structure, public-doc read order, Grok/Cursor operating rules, marketing of the system, or a restatement of `quarry-guidelines.md` / `README.md` content. If the only "insights" left after that filter are meta-system bullets, the chat is not a `g-capture` job — use the refusal line above. For word-mode captures (see next section), `SKIP: term capture — distillation produces a Canon Word encounter, not an insight file.` is a valid and usually honest substitute.
+>
+> **No extra sections.** The handoff ends at `**Metadata**` and `Handoff: /capture`. Do **not** append "Routing recommendation", "Non-negotiables", or other sections — they tempt you to launder system meta into a capture block and confuse Cursor.
 >
 > **`source-type` must be from the allowed set only.** Use exactly one of: `x-thread`, `x-post`, `article`, `book`, `essay`, `podcast`, `talk`, `conversation`, `documentary`, `quote`, `word`, `other` (map close variants yourself — e.g. `video` → `talk` or `podcast`). Never invent a free-text type like "user-provided definition".
+>
+> ---
+>
+> **Word mode (term capture).** When the author wants to track a **term / concept** that exists in the wider world rather than a specific document, use `g-capture` with `source-type: word`. This covers three common shapes:
+>
+> - **Term encountered in reading or conversation** — *"I met 'ordo amoris' in Augustine today — capture it."* Provenance: the author's actual encounter.
+> - **Term recurring in a tradition** — *"'Hesed' keeps turning up in theology; capture it so the vault tracks it."* Provenance: the tradition itself; the author may not have one specific text.
+> - **Grok-as-reference-book** — *"I've been thinking about 'timeless principles'; give me a working definition so I can track the term."* Provenance: **honest about the chat itself** — the "Encountered via" line must say so (e.g. `Asked Grok to surface a working definition after considering X.`). A Grok-synthesised definition is a working aid, not an authoritative source; flag it as such.
+>
+> Word-mode handoff block has a slightly different shape from a document capture:
+>
+> 1. `/capture` on its own line (as always).
+> 2. Blank line.
+> 3. `**Source summary**` — 2–3 lines: what the term names, why it is worth tracking, honest provenance (where the author encountered it, or *that Grok is acting as reference book*). No marketing language.
+> 4. `**Source metadata**`:
+>    - `source-type: word`
+>    - `source-url:` *(optional — link to an etymology resource, a primary text, or Wiktionary if useful; omit if none)*
+>    - `source-author:` *(optional — the thinker or tradition most associated with the term, e.g. "Augustine" for *ordo amoris*; omit if diffuse)*
+>    - `source-title:` — the term itself as the author would reference it (e.g. "ordo amoris", "timeless principles")
+> 5. `**Working definition**` — 1–3 lines. If attributable to a specific thinker or work, cite it. If Grok-synthesised from training data, end the block with a parenthetical flag: *(Grok synthesis from training data; verify against primary sources before citing in shipped content.)*
+> 6. `**Etymology**` *(optional — include only when Grok knows it honestly from training data; omit rather than guess)*. One or two lines: root language, original form, salient semantic drift. Do not invent.
+> 7. `**Encountered via**` — one line naming the author's actual encounter path. Honest options include: *"Asked Grok to surface a working definition after thinking about X."*, *"Encountered in {book / talk / article / thread}."*, *"Recurring term in {tradition / domain}."*
+> 8. `**Candidate insights**` — usually `SKIP: term capture — distillation produces a Canon Word encounter, not an insight file.` is the right line. Only list an atomic claim when the author's engagement with the term has actually produced one (e.g. *"'Timeless principles' overlaps with Truth-over-Time but is broader and less load-bearing; prefer the sharper term."*).
+> 9. `**Metadata**`:
+>    - `content-id: word-{kebab-slug-of-term}` — always prefixed `word-` so Cursor routes to the Word sub-flow.
+>    - `main-topic:` — the term, in human-readable form.
+>    - `tags:` — include `source` and `word`; add 1–3 domain tags (e.g. `philosophy`, `theology`, `etymology`).
+> 10. `Handoff: /capture`.
+>
+> Word-mode example (shape, not content):
+>
+> ````markdown
+> /capture
+>
+> **Source summary**
+> A Latin-via-Greek Augustinian term naming "ordered love" — the disciplined proportion in which a person loves lesser and greater goods. Worth tracking because it recurs in Christian-formed moral reasoning and carries weight the modern word "priorities" cannot.
+>
+> **Source metadata**
+> - **source-type:** word
+> - **source-url:**
+> - **source-author:** Augustine
+> - **source-title:** ordo amoris
+>
+> **Working definition**
+> The right ordering of loves — each good loved in proportion to its worth, neither under- nor over-prized. Augustine, *De Doctrina Christiana* I.27: *"That man lives in justice and sanctity who is an unprejudiced assessor of the intrinsic value of things."*
+>
+> **Etymology**
+> Latin *ordo* (order, arrangement) + *amoris* (genitive of *amor*, love). Classical and patristic moral vocabulary; distinct from modern "priorities" in carrying moral weight, not merely optimisation weight.
+>
+> **Encountered via**
+> Recurring term in Christian-formed moral writing; captured today after a re-reading of Augustine surfaced it as worth tracking.
+>
+> **Candidate insights**
+> SKIP: term capture — distillation produces a Canon Word encounter, not an insight file.
+>
+> **Metadata**
+> - **content-id:** word-ordo-amoris
+> - **main-topic:** ordo amoris
+> - **tags:** [source, word, philosophy, theology, ethics, augustine]
+>
+> Handoff: /capture
+> ````
 
 ---
 
