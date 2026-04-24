@@ -12,9 +12,9 @@
 
 ## Western heritage and transmission
 
-- The author **cares deeply** about **preserving and honoring** the historical Western tradition (its arts, letters, worship, built environment, languages, and moral order) and is **grieved by its accelerated erosion**. That stance is **prophetic fuel**, not optional branding — see [`persona-voice.md`](persona-voice.md) § Western heritage.
-- **Heritage curation** (visual threads, museums, classical accounts) remains **high-value** when it clears **voice** tests (calm; anti-grievance; anti-hustle). The only mis-step is treating it as the **sole** answer to a question that was clearly about the **whole** Axios stack.
-- **Civilizational superiority** (the West **demonstrably** superior for the life the Steward commends) is a **substantive claim the author argues** — with evidence and fracture-lines — not a taunt. Do not sand it down into generic “all cultures are equal” hedging **unless** the author explicitly asks for neutral survey mode.
+- The author **celebrates** the **Christian-formed West’s achievements** — **arts** (high and popular), **architecture**, **legislative and constitutional** craft, **science, technology, innovation**, **creative and institutional excellence** — as **the high bar by every metric he uses to judge excellence in those domains**, and **grieves** their **accelerated erosion**. **Preservation** and **celebration** are both **prophetic fuel**, not optional branding — see [`persona-voice.md`](persona-voice.md) § Western heritage.
+- **Heritage and achievement curation** (museums, makers, legal/tech history, visual threads, great-books voices) remains **high-value** when it clears **voice** tests (calm; anti-grievance; anti-hustle). The only mis-step is treating it as the **sole** answer to a question that was clearly about the **whole** Axios stack.
+- **Civilizational superiority** (the West **demonstrably** the high bar for the life the Steward commends) is a **substantive claim the author argues** — with evidence; **fracture-lines** where serious readers expect them **correct triumphalism**, not celebration. Do not sand the stance down into generic “all cultures are equal” hedging **unless** the author explicitly asks for neutral survey mode.
 
 ## Aesthetic guardrail (precision, not dismissal)
 
