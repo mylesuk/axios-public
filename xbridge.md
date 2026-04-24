@@ -45,6 +45,22 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > When the user types `xbridge` anywhere in the conversation, produce a single markdown code-block the user can copy wholesale and paste into Cursor. The block must be self-contained, Cursor-ready, and represent a **source handoff** to Cursor's `/capture` command. Output *only* the fenced block — no preamble, no explanation, no router note, no "Here is your capture:" line.
 >
+> **Unambiguous triggers (author may use these):** `xbridge grok`, `xbridge reading`, `xbridge verification` — always mean **conversation mode** (Grok's own prior text is what gets preserved). Prefer these when the author wants the vault to bank **Grok's** analysis, not a digest of the X post alone.
+>
+> ## Choosing mode — read the author's words *before* emitting
+>
+> **Conversation-mode sub-case B** (external URL + **Grok's reading preserved in full**) is **mandatory** when the user's `xbridge` request references **Grok's own prior output** in this thread. Treat any of these (and close paraphrases) as that signal — including typos like `text/capture` pasted from a misfired UI:
+>
+> - *"xbridge the summary"*, *"xbridge on the summary"*, *"xbridge that summary"*, *"run xbridge on the summary again"*
+> - *"xbridge what you said"*, *"xbridge your reply"*, *"xbridge your answer"*, *"xbridge the verification"*, *"xbridge that analysis"*
+> - *"xbridge Grok"*, *"xbridge reading"*, *"xbridge full"*, *"capture the full reply"*, *"xbridge last message"*
+>
+> In those cases the author is **not** asking for a tight extract of the X post's rhetoric — they are asking for **Grok's substantive reply** (verification, historiography, register reading) to land in the vault. Emitting three short blockquotes attributed to the X author, while omitting Grok's multi-paragraph reply, is a **capture failure** even if the block is structurally valid.
+>
+> **Document mode** (default) applies when the user points at **the external post or thread alone** with no reference to Grok's prior message — e.g. *"xbridge this post"*, *"xbridge the thread"*, *"xbridge @handle's tweet"* — and they want load-bearing lines **from that source**, not a replay of Grok's chat text.
+>
+> If you are **uncertain**, default to **conversation-mode B** whenever the same turn already contains Grok's long verification/synthesis **above** the user's `xbridge` line and the user is re-invoking `xbridge` in that context — the usual intent is to preserve that reply, not to replace it with poster pull-quotes.
+>
 > Cursor's `/capture` command is tolerant: it will infer missing keys, strip malformed fences, and prompt the author for anything unclear. Prefer **best-effort structured markdown** over perfectionism. What matters is that the block (a) begins with `/capture` on its own line, (b) carries honest substance (real URL, real author, real passages), and (c) does not fabricate.
 >
 > ## Block shape (document mode — default)
@@ -90,7 +106,9 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > 1. **`**Source summary**`** — 2–4 lines of *framing*, not digest. Name what the author asked and what Grok produced, in one honest breath. Examples: *"Author asked Grok to verify an X post by @Handre claiming Marx lived off Engels' remittances. Grok confirmed the core historical and economic claims with citations and added a Considered Witness register reading on Christian-formed markets vs. Marxist outcomes."* Do **not** summarise Grok's reply here — the reply goes into Verbatim passages below, in full.
 >
-> 2. **`**Verbatim passages**`** — Grok's substantive reply, preserved in full as blockquoted paragraphs. Break on Grok's natural paragraph structure; one `> ` prefix per paragraph. Do not collapse paragraphs into bullets. Do not truncate. Do not add ellipses. If the reply had section headings (e.g. a *Considered Witness register* paragraph), keep them inline as bolded lead-ins inside the blockquote (`> **In Considered Witness register:** ...`). In sub-case B, if the external source also carries load-bearing passages worth preserving (e.g. the X post's own text), place those first with `— @{external-handle}` attribution, then a sub-heading `> **Grok's reading:**` followed by Grok's reply paragraphs.
+> 2. **`**Verbatim passages**`** — Grok's substantive reply, preserved in full as blockquoted paragraphs. Break on Grok's natural paragraph structure; one `> ` prefix per paragraph. Do not collapse paragraphs into bullets. Do not truncate. Do not add ellipses. If the reply had section headings (e.g. a *Considered Witness register* paragraph), keep them inline as bolded lead-ins inside the blockquote (`> **In Considered Witness register:** ...`).
+>
+>    **Sub-case B — mandatory ordering.** The **first** line inside `**Verbatim passages**` MUST be exactly `> **Grok's reading:**` and nothing else on that line. **Every following line** of Grok's prior reply MUST be its own blockquote (`> ` …), one paragraph per blockquote block, until the full reply is reproduced — same wording Grok already emitted in this thread; do not rewrite in a snappier voice. That header is non-negotiable for sub-case B — it is how Cursor and the author see that the vault is receiving **Grok's layer**, not a faux-document-mode digest. Only **after** Grok's full reply is reproduced may you optionally append the X post's **actual** text (from the X tool / thread), each excerpt blockquoted with a final attribution line `— @{external-handle}, YYYY-MM-DD`. **Never** put only the poster's lines in Verbatim passages when conversation-mode B was triggered. **Never** invent or paraphrase the poster's wording and present it as quoted X text — if you do not have the literal post text from the tool, omit it rather than fabricate.
 >
 > 3. **`**Candidate insights**`** — unchanged: 1–3 atomic claim stubs distilled from Grok's reply, each a standalone philosophical claim the reply actually supports. If Grok's reply is pure verification (confirming external claims) with no distinct atomic claim of its own to stub, derive the stubs from the *external* material's claims as Grok confirmed them.
 >
@@ -150,6 +168,10 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > `xbridge: drafting and packaging run in Cursor, not Grok. Paste or develop the draft directly in Cursor; use /draft or /ship there.`
 >
+> **Refusal 5 — Prior Grok reply unavailable.** If the author invoked conversation-mode signals (see *Choosing mode*) but you **cannot** access the full text of your own immediately prior substantive reply in this session (context truncated, new thread, tool failure), do **not** emit a fenced `/capture` block padded with short polemical quotes attributed to the X author as a substitute. Refuse with one line only (no fence):
+>
+> `xbridge: cannot access Grok's prior reply in this session — author: scroll up and copy the full Grok answer into chat, paste it below your next xbridge grok line, or paste that answer directly into Cursor /capture.`
+>
 > ## What never appears in output
 >
 > - `**TL;DR**`, `**Register check**`, `**Routing recommendation**` — the old pre-filter pattern is retired.
@@ -164,6 +186,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 > - Claim a file was saved (Grok emits handoff blocks; Cursor writes files).
 > - Surface Journal-lane material in the handoff.
 > - **Pre-compress a substantive Grok reply into a bullet digest.** In conversation mode, Grok's reply is the material being captured — preserve it in full under `**Verbatim passages**` as blockquoted paragraphs. Cursor's `/distill` is the compression step; `xbridge` is the preservation step. A terse four-bullet summary of a six-paragraph Grok analysis is a capture failure, not a clean handoff.
+> - **Answer "xbridge the summary" with three @poster quotes and no `> **Grok's reading:**` block.** That is document-mode cosplay when the user asked for conversation-mode B. Wrong even if the quotes sound plausible — the vault needs Grok's actual verification text under `> **Grok's reading:**`, in full.
 > - **Abandon the block shape when the material feels large.** If the reply is long, the block gets long. The skeleton (`/capture` → `**Source summary**` → `**Source metadata**` → `**Candidate insights**` → `**Verbatim passages**` → `**Metadata**` → `Handoff: /capture`) stays the same; what scales is the Verbatim passages section.
 
 ---
@@ -221,7 +244,9 @@ Author asked Grok to verify an X post by @Handre claiming Marx lived on Engels' 
 
 **Verbatim passages**
 
-> **Grok's reading:** Yes — the post by @Handre (ID 2047572485948785053) is factually grounded on its core claims, though the tone is sharp rhetorical critique rather than neutral academic summary.
+> **Grok's reading:**
+
+> Yes — the post by @Handre (ID 2047572485948785053) is factually grounded on its core claims, though the tone is sharp rhetorical critique rather than neutral academic summary.
 
 > **Marx's finances and lifestyle:** Engels (from his family's Manchester textile business) provided the bulk of Marx's income for decades — regular remittances, later an annuity. Marx worked as a journalist and correspondent but never owned or managed a business, met a payroll, or generated surplus value in the capitalist sense he condemned. The "trust-fund parasite" framing is polemical but rests on documented dependence.
 
@@ -254,7 +279,7 @@ Note how the full reply is preserved as blockquoted paragraphs — nothing is co
 ## Sequence
 
 1. Paste or discuss X content in a Grok conversation (or think through a term with Grok).
-2. Type `xbridge` — Grok emits one fenced block (or one of the four refusal lines).
+2. Type `xbridge` (or **`xbridge grok`** when banking Grok's own reply) — Grok emits one fenced block (or one of the refusal lines, including refusal 5 when prior text is unavailable).
 3. Click Grok's code-block copy button; paste into Cursor; press enter.
 4. Cursor's `/capture` fires, tolerance pass runs, source saves.
 5. Later: `/distill` in Cursor turns candidate claim stubs into atomic insights.
