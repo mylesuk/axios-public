@@ -12,10 +12,12 @@ The **private vault** (`Axios/`) contains journals, therapy, inquiry, raw corpor
 
 ## Read in this order
 
+Matches the Grok Axios project custom instruction (`mission.md` → `glossary.md` → `vocabulary.md` → …):
+
 1. [`mission.md`](mission.md) — the single paragraph. What Axios is for.
-2. [`glossary.md`](glossary.md) — the terms (Atelier, Quarry, Journal, Steward of Value, etc.).
-3. [`persona-voice.md`](persona-voice.md) — public persona and voice.
-4. [`vocabulary.md`](vocabulary.md) — preferred vs retired terms, with reasons. The antibody against register drift.
+2. [`glossary.md`](glossary.md) — the terms (Atelier, Quarry, Journal, Steward of Value, etc.) plus mission-alignment notes for models.
+3. [`vocabulary.md`](vocabulary.md) — preferred vs retired terms, with reasons. The antibody against register drift.
+4. [`persona-voice.md`](persona-voice.md) — public persona and voice.
 5. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.
 6. [`conventions.md`](conventions.md) — slugs, metadata, filename rules.
 7. [`quarry-guidelines.md`](quarry-guidelines.md) — the three lanes: what Grok bridges, what goes directly to Cursor, what is refused.
@@ -67,7 +69,7 @@ Full routing rules: [`quarry-guidelines.md`](quarry-guidelines.md). Full trigger
 
 ## Source of truth
 
-The vault (`Axios/`) is canonical. This repository is a **derived artifact** synced from the vault by a script. Do not hand-edit files here; edit in the vault and re-run the sync.
+The private vault (`Axios/`) is canonical for the **whole system**. In *this* repo, only **`mission.md`** and **`xbridge.md`** are copied from the vault by the whitelist sync script in the vault (`Support/Resources/sync-axios-public.sh`). **Every other markdown file here is edited in this repository** (those paths are not overwritten by sync). After changing the vault’s mission or the `xbridge` spec, run that script or vault `/push` so GitHub stays current.
 
 ## License and scope
 
