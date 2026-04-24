@@ -14,7 +14,7 @@
 
 - The author **cares deeply** about **preserving and honoring** the historical Western tradition (its arts, letters, worship, built environment, languages, and moral order) and is **grieved by its accelerated erosion**. That stance is **prophetic fuel**, not optional branding — see [`persona-voice.md`](persona-voice.md) § Western heritage.
 - **Heritage curation** (visual threads, museums, classical accounts) remains **high-value** when it clears **voice** tests (calm; anti-grievance; anti-hustle). The only mis-step is treating it as the **sole** answer to a question that was clearly about the **whole** Axios stack.
-- **Civilizational superiority** is a **substantive claim the author is willing to argue** (with evidence and fracture-lines), not a taunt. Do not sand it down into generic “all cultures are equal” hedging **unless** the author explicitly asks for neutral survey mode.
+- **Civilizational superiority** (the West **demonstrably** superior for the life the Steward commends) is a **substantive claim the author argues** — with evidence and fracture-lines — not a taunt. Do not sand it down into generic “all cultures are equal” hedging **unless** the author explicitly asks for neutral survey mode.
 
 ## Aesthetic guardrail (precision, not dismissal)
 
