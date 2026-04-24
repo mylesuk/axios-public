@@ -18,7 +18,7 @@ Axios is a thinking studio I'm building for the long horizon. The aim is to thin
 
 - **External.** The answer when a friend (or stranger) asks *"what are you building?"* Lift it whole, or trim to the first two sentences for short contexts.
 - **Internal.** The north star for `/audit` and for any moment of doubt about whether something belongs in the vault. If a proposed change does not serve this paragraph, it probably does not serve the project.
-- **For Grok.** `sync-axios-public.sh` copies this file to `axios-public/mission.md`; Grok's project instructions read the same paragraph the vault reads.
+- **For Grok.** `sync-axios-public.sh` copies this file to `axios-public/mission.md`. The public repo’s **`mission-primer.md`** is a model-facing *application* guide for this paragraph — it must not replace it. Grok’s read order and paste text live in the vault beside the name **`axios-public-sync`** (checklist note, same folder as the Grok instruction files). When mission *meaning* shifts, update **`mission-primer.md`** and **`glossary.md`** in `axios-public` in the same pass.
 
 ## When to revisit
 

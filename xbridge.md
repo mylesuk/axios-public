@@ -27,7 +27,7 @@ The Grok custom instruction the author triggers when material lives on **X** (gr
 
 ## How to install
 
-In Grok (grok.com → Axios project → custom instructions), paste the instruction below. Trigger it by typing `xbridge` in any Grok conversation that has surfaced X material or a Grok exchange worth capturing. Grok returns one fenced block; the author clicks the code-block copy button and pastes into Cursor. Because the pasted content begins with `/capture`, Cursor auto-invokes the command on paste+enter.
+In Grok (grok.com → Axios project → custom instructions), paste **two** pieces in order: (1) the **project instruction** paragraph from [`grok-axios-project-instruction.md`](grok-axios-project-instruction.md) — Axios vocabulary, mandatory read of `axios-public`, and civilizational register — so general questions (not only `xbridge`) stay aligned with the vault; (2) the **`xbridge` contract** (the blockquoted spec below). Trigger `xbridge` only when capturing. If Grok only receives the `xbridge` spec, it will misunderstand words like **Atelier** (Axios names a philosophical studio + catalog pipeline, not a fine-arts workshop). When the public read-order or sync rules change, follow [`axios-public-sync.md`](axios-public-sync.md) and re-paste the updated **project instruction** into Grok.
 
 ---
 

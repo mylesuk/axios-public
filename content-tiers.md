@@ -2,6 +2,8 @@
 
 Axios outputs three tiers of public work, plus one framing layer (Truth-over-time) that cross-cuts them. Grok should know which tier a handoff targets and shape output accordingly.
 
+All tiers are **downstream of** the mission in [`mission.md`](mission.md): the vault and the discipline of careful thinking are the actual work; threads, carousels, and articles are the overflow that survives scrutiny — not a volume target or growth loop.
+
 ## Tier 1 — Threads and carousels
 
 Short public pieces. High frequency relative to the other tiers. Not throwaways; distilled from mature insights in `Atelier/20-Insights/` or finished articles.

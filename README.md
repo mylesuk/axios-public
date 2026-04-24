@@ -12,16 +12,17 @@ The **private vault** (`Axios/`) contains journals, therapy, inquiry, raw corpor
 
 ## Read in this order
 
-Matches the Grok Axios project custom instruction (`mission.md` → `glossary.md` → `vocabulary.md` → …):
+Matches the Grok Axios project custom instruction (`mission.md` → `mission-primer.md` → `glossary.md` → …):
 
 1. [`mission.md`](mission.md) — the single paragraph. What Axios is for.
-2. [`glossary.md`](glossary.md) — the terms (Atelier, Quarry, Journal, Steward of Value, etc.) plus mission-alignment notes for models.
-3. [`vocabulary.md`](vocabulary.md) — preferred vs retired terms, with reasons. The antibody against register drift.
-4. [`persona-voice.md`](persona-voice.md) — public persona and voice.
-5. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.
-6. [`conventions.md`](conventions.md) — slugs, metadata, filename rules.
-7. [`quarry-guidelines.md`](quarry-guidelines.md) — the three lanes: what Grok bridges, what goes directly to Cursor, what is refused.
-8. [`xbridge.md`](xbridge.md) — the single Grok trigger contract.
+2. [`mission-primer.md`](mission-primer.md) — how models should *apply* the mission (not a second mission text).
+3. [`glossary.md`](glossary.md) — the terms (Atelier, Quarry, Journal, Steward of Value, etc.) plus mission-alignment notes for models.
+4. [`vocabulary.md`](vocabulary.md) — preferred vs retired terms, with reasons. The antibody against register drift.
+5. [`persona-voice.md`](persona-voice.md) — public persona and voice.
+6. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.
+7. [`conventions.md`](conventions.md) — slugs, metadata, filename rules.
+8. [`quarry-guidelines.md`](quarry-guidelines.md) — the three lanes: what Grok bridges, what goes directly to Cursor, what is refused.
+9. [`xbridge.md`](xbridge.md) — the single Grok trigger contract.
 
 ## Pipeline at a glance
 
