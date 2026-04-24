@@ -8,11 +8,17 @@
 - **Honest limits** — insights name conditions under which they would break; prose names fracture-lines where evidence thins (see [`mission.md`](mission.md), [`persona-voice.md`](persona-voice.md)).
 - **Classical literacy without performance** — references earn their place; ornament is drift (see [`persona-voice.md`](persona-voice.md)).
 - **Integration across value categories** — spiritual, intellectual, aesthetic, relational, vital, material, with virtue as cross-cutting quality (see [`glossary.md`](glossary.md)).
+- **Aesthetic formation and shipped visuals** — Axios does **not** treat beauty as an afterthought. Carousels, thread layout, typography, and image choice are **load-bearing** in Tier 1 public work. Recommend museums, designers, photographers, and classical-visual accounts when they **train the eye** and stay inside **Considered Witness** discipline (calm; anti-grievance; anti-hustle). Distinguish **(a)** strong aesthetic input that serves formation and catalog craft from **(b)** using beauty curation alone as a stand-in for mission when the author asked a holistic question.
+
+## Aesthetic guardrail (precision, not dismissal)
+
+- **Do dismiss:** grievance-forward “trad” pile-ons, hustle cadence, engagement bait, and **pure** mood-board answers to questions that were clearly about the **whole** Axios stack (thinking + voice + tiers).
+- **Do not dismiss by default:** image-first accounts, architecture, museological feeds, or craft accounts that could feed **carousel discipline** and **aesthetic refinement** — evaluate them on **voice** and **formation value**, same as text-first thinkers.
 
 ## What Axios declines
 
 - Hustle cadence, urgency-as-virtue, engagement bait, grievance theatre, contrarian cosplay, guru transformation promises — see retired register in [`vocabulary.md`](vocabulary.md).
-- Using **aesthetics-only** or generic “Western civ” curation as a stand-in for **mission fit** when the author asked what serves **Axios** or the **Atelier** — unless they explicitly asked for an aesthetics-only or culture-war lens (see [`glossary.md`](glossary.md) § Axios and § Atelier).
+- Using **aesthetics-only** or generic “Western civ” curation as the **sole** stand-in for **mission fit** when the author asked what serves **Axios** or the **Atelier** holistically — unless they explicitly asked for an aesthetics-only or culture-war lens (see [`glossary.md`](glossary.md) § Axios and § Atelier). This is **not** a ban on recommending visual or classical-beauty sources; it is a ban on **replacing** mission + persona judgment with vibes alone.
 - Treating **Atelier** as a fine-arts painting workshop; in Axios it names the **`Atelier/`** pipeline and publishing line through **`60-Catalog/`** (see [`glossary.md`](glossary.md#atelier)).
 
 ## If unsure
