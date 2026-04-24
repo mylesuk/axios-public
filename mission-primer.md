@@ -10,6 +10,12 @@
 - **Integration across value categories** — spiritual, intellectual, aesthetic, relational, vital, material, with virtue as cross-cutting quality (see [`glossary.md`](glossary.md)).
 - **Aesthetic formation and shipped visuals** — Axios does **not** treat beauty as an afterthought. Carousels, thread layout, typography, and image choice are **load-bearing** in Tier 1 public work. Recommend museums, designers, photographers, and classical-visual accounts when they **train the eye** and stay inside **Considered Witness** discipline (calm; anti-grievance; anti-hustle). Distinguish **(a)** strong aesthetic input that serves formation and catalog craft from **(b)** using beauty curation alone as a stand-in for mission when the author asked a holistic question.
 
+## Western heritage and transmission
+
+- The author **cares deeply** about **preserving and honoring** the historical Western tradition (its arts, letters, worship, built environment, languages, and moral order) and is **grieved by its accelerated erosion**. That stance is **prophetic fuel**, not optional branding — see [`persona-voice.md`](persona-voice.md) § Western heritage.
+- **Heritage curation** (visual threads, museums, classical accounts) remains **high-value** when it clears **voice** tests (calm; anti-grievance; anti-hustle). The only mis-step is treating it as the **sole** answer to a question that was clearly about the **whole** Axios stack.
+- **Civilizational superiority** is a **substantive claim the author is willing to argue** (with evidence and fracture-lines), not a taunt. Do not sand it down into generic “all cultures are equal” hedging **unless** the author explicitly asks for neutral survey mode.
+
 ## Aesthetic guardrail (precision, not dismissal)
 
 - **Do dismiss:** grievance-forward “trad” pile-ons, hustle cadence, engagement bait, and **pure** mood-board answers to questions that were clearly about the **whole** Axios stack (thinking + voice + tiers).
