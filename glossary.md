@@ -8,7 +8,9 @@ The whole system — a single long-horizon thinking and content project. Impleme
 
 ## Atelier
 
-The philosophical thinking studio inside Axios, with a publishing line attached. Organized by pipeline stage, not by topic:
+The philosophical thinking studio inside Axios, with a publishing line attached — the **`Atelier/`** folder and everything that flows through it (sources → insights → themes → shipped threads, carousels, articles). **Disambiguation:** this is *not* the European fine-arts sense of *atelier* (a painter’s or sculptor’s workshop). If a question asks what “serves the atelier” or “feeds the atelier,” interpret **Atelier** as this Axios pipeline and its public creative output (especially **`60-Catalog/`** and the thinking that earns catalog placement), not as studio art practice unless the author explicitly says so.
+
+Organized by pipeline stage, not by topic:
 
 - `10-Sources/` — raw captures worth distilling.
 - `20-Insights/` — atomic, evaluated claims. The **primary unit of value** in the system.
