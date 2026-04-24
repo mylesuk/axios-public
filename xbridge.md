@@ -45,6 +45,8 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > When the user types `xbridge` anywhere in the conversation, produce a single markdown code-block the user can copy wholesale and paste into Cursor. The block must be self-contained, Cursor-ready, and represent a **source handoff** to Cursor's `/capture` command. Output *only* the fenced block — no preamble, no explanation, no router note, no "Here is your capture:" line.
 >
+> **`xbridge` responses never include `Axios docs read`.** That audit line belongs only in your **first** substantive reply of a **new session** when you are *not* emitting `xbridge`. If the user types `xbridge`, your **entire** message is the one triple-backtick handoff — **do not** prepend `Axios docs read`, `**Axios docs read**`, or any other prose before the opening fence line (three grave accents alone).
+>
 > **Unambiguous triggers (author may use these):** `xbridge grok`, `xbridge reading`, `xbridge verification` — always mean **conversation mode** (Grok's own prior text is what gets preserved). Prefer these when the author wants the vault to bank **Grok's** analysis, not a digest of the X post alone.
 >
 > ## Choosing mode — read the author's words *before* emitting
@@ -65,7 +67,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > ## Block shape (document mode — default)
 >
-> 1. `/capture` on its own line as the very first line of the block.
+> 1. **`/capture` is the first line inside the fence** — the line **immediately after** the opening fence line (three grave accents on their own line, with **no** language tag). That line must be **exactly** `/capture` — **no leading space, tab, or indent** before the slash. (A leading space breaks Cursor's auto-invoke of `/capture`.)
 > 2. One blank line.
 > 3. `**Source summary**` — 3–5 lines of plain prose describing what the material *argues or shows*, not just its topic. This is framing, not a compressed version of the material — the load-bearing content goes into `**Verbatim passages**` below. Do not pre-digest.
 > 4. `**Source metadata**` — key/value lines, bold key names:
@@ -140,7 +142,18 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > ## Fence discipline
 >
-> The entire output is a single triple-backtick fence with **no language tag**. Do not write ` ```markdown`, ` ```text`, `---`, or anything other than three backticks on an otherwise-blank line to open and close the block. Grok.com's copy button strips the outer fence; the paste into Cursor begins with `/capture` and auto-fires the command.
+> The entire **message** Grok sends in response to `xbridge` is **exactly one** triple-backtick fence pair — open, body, close — with **no language tag** on the opening line. Do not add a language tag after the opening three grave accents (no *markdown*, *text*, *yaml*, etc.). Do not prefix the closing fence with `---` or other delimiters.
+>
+> **No nested or "display" fences.** Do **not** wrap the handoff inside an outer fence pair for prettiness. Do **not** indent the whole handoff as a markdown code block (four-space indent). Do **not** put the handoff inside a second inner fence. Nesting breaks the author's paste: Cursor must receive a paste whose usable payload begins with `/capture` after Grok's UI strips **one** outer fence — not a second opening fence line before `/capture`.
+>
+> Grok.com's copy button strips the **single** outer fence; the paste into Cursor should begin with `/capture` and auto-fire the command.
+>
+> **Self-check before sending an `xbridge` response:**
+>
+> 1. My message opens with the fence opener line: **exactly** three grave accents (ASCII 0x60) and nothing else on that line — no spaces, no language tag, no prose before it.
+> 2. The very next line is exactly `/capture` (no leading space).
+> 3. Under `**Source metadata**`, every key line uses the list form `- **source-type:**` … with **bold** keys (not bare `source-type:` flush left — that drifts from the parser shape).
+> 4. If conversation-mode **B** applies: the first line under `**Verbatim passages**` is exactly `> **Grok's reading:**` on its own line; my reproduced reply follows on subsequent `> ` lines.
 >
 > **Nothing goes after the closing fence.** No "banked in the Quarry," no "let me know if you want a deeper breakdown," no follow-up questions, no next-step offers. The block is the entire response. Cursor handles everything downstream.
 >
@@ -187,6 +200,8 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 > - Surface Journal-lane material in the handoff.
 > - **Pre-compress a substantive Grok reply into a bullet digest.** In conversation mode, Grok's reply is the material being captured — preserve it in full under `**Verbatim passages**` as blockquoted paragraphs. Cursor's `/distill` is the compression step; `xbridge` is the preservation step. A terse four-bullet summary of a six-paragraph Grok analysis is a capture failure, not a clean handoff.
 > - **Answer "xbridge the summary" with three @poster quotes and no `> **Grok's reading:**` block.** That is document-mode cosplay when the user asked for conversation-mode B. Wrong even if the quotes sound plausible — the vault needs Grok's actual verification text under `> **Grok's reading:**`, in full.
+> - **Omit the mandatory `> **Grok's reading:**` line** in conversation-mode B while pasting Grok's paragraphs — even one missing header line is a spec violation; insert the header **above** the first paragraph of Grok text, on its own line, before sending.
+> - **Prepend `Axios docs read` or wrap the handoff in an extra outer ` ``` ` fence**, or put a **leading space before `/capture`**. Any of these breaks Cursor paste / auto-invoke; the `xbridge` response is only the single spec fence.
 > - **Abandon the block shape when the material feels large.** If the reply is long, the block gets long. The skeleton (`/capture` → `**Source summary**` → `**Source metadata**` → `**Candidate insights**` → `**Verbatim passages**` → `**Metadata**` → `Handoff: /capture`) stays the same; what scales is the Verbatim passages section.
 
 ---
