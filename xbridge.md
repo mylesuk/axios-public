@@ -157,7 +157,7 @@ Handoff: /capture
 
 ## Cursor side
 
-`/capture` (defined in `the `/capture` command on the Cursor side`) parses the block, runs a **light tolerance pass** at intake (strips malformed fence lines, normalizes section headers, infers missing YAML keys from body content, prompts the author for anything still genuinely missing), then writes to `Atelier/10-Sources/source-{content-id}.md` (or routes through the Canon Words flow on `source-type: word` / `content-id: word-*`).
+`/capture` (defined in `the Cursor /capture command`) parses the block, runs a **light tolerance pass** at intake (strips malformed fence lines, normalizes section headers, infers missing YAML keys from body content, prompts the author for anything still genuinely missing), then writes to `Atelier/10-Sources/source-{content-id}.md` (or routes through the Canon Words flow on `source-type: word` / `content-id: word-*`).
 
 ## Sequence
 
