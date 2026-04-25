@@ -16,7 +16,7 @@ Matches the Grok Axios project custom instruction (`mission.md` → `mission-pri
 
 1. [`mission.md`](mission.md) — the single paragraph. What Axios is for.
 2. [`mission-primer.md`](mission-primer.md) — how models should *apply* the mission (not a second mission text).
-3. [`glossary.md`](glossary.md) — the terms (Atelier, Quarry, Journal, Steward of Value, etc.) plus mission-alignment notes for models.
+3. [`glossary.md`](glossary.md) — the terms (Atelier, Quarry, Journal, the Integrating Warrior, the Integrating Voice, etc.) plus mission-alignment notes for models. Retired terms (Steward of Value, Considered Witness — both retired 2026-04-25) are kept in the glossary so legacy material remains legible.
 4. [`vocabulary.md`](vocabulary.md) — preferred vs retired terms, with reasons. The antibody against register drift.
 5. [`persona-voice.md`](persona-voice.md) — public persona and voice.
 6. [`content-tiers.md`](content-tiers.md) — how output is tiered; Truth-over-time.

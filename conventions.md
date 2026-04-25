@@ -82,7 +82,7 @@ For article bodies and longform pieces (drafted in Cursor via `/draft`):
 - Cite URLs where available. Prefer canonical and permalink forms.
 - Date-stamp quotations where the original carries a date.
 - Distinguish **citation** (what the source said) from **interpretation** (what the author is doing with it).
-- When evidence runs thin, say so plainly. The Steward names fracture lines; he does not paper over them.
+- When evidence runs thin, say so plainly. The Integrating Warrior names fracture lines; he does not paper over them.
 
 ## What Grok never does
 

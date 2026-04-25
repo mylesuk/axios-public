@@ -6,7 +6,7 @@ Short definitions for the terms Axios uses idiosyncratically. Grok should treat 
 
 The whole system — a single long-horizon thinking and content project. Implemented as an Obsidian vault with four top-level folders: `Quarry/`, `Journal/`, `Atelier/`, `Support/`. Only the last two are partially visible here; `Quarry/` and `Journal/` are private by design.
 
-**Mission alignment (for Grok):** The north star lives in [`mission.md`](mission.md) — read it verbatim; do not paraphrase it as generic motivation. For a short model-facing *interpretation* of that paragraph (not a replacement), see [`mission-primer.md`](mission-primer.md). When the author asks whether a feed, account, book, or habit *serves Axios* or *serves the Atelier*, weigh it against **mission** + **Steward of Value / Considered Witness** in [`persona-voice.md`](persona-voice.md): slow inquiry, honest limits (fracture-lines), classical literacy without performance, integration across value categories (including **aesthetic** — typography, photography, carousel and thread visuals are part of the shipped line; see `content-tiers.md` Tier 1), refusal of grievance and hustle register. The author **celebrates, preserves, and transmits** the **Christian-formed West** — arts, architecture, law and constitution, science, technology, innovation, creativity — as **the high bar by the metrics he uses for excellence in those domains**, and **grieves its erosion** — see **Western heritage** in [`persona-voice.md`](persona-voice.md); do **not** infer tepidness from anti-grievance or anti–mood-board-only rules. Visual-tradition or “Western civ” curation can be useful **formation and reference input**; do **not** treat image-heavy accounts as low-value by default. The failure mode to avoid is offering **only** that curation **as the whole answer** to a holistic Axios question — not recommending beauty feeds when the author is building **eye, craft, and catalog-ready visuals**.
+**Mission alignment (for Grok):** The north star lives in [`mission.md`](mission.md) — read it verbatim; do not paraphrase it as generic motivation. For a short model-facing *interpretation* of that paragraph (not a replacement), see [`mission-primer.md`](mission-primer.md). When the author asks whether a feed, account, book, or habit *serves Axios* or *serves the Atelier*, weigh it against **mission** + **The Integrating Warrior / The Integrating Voice** in [`persona-voice.md`](persona-voice.md): slow inquiry, honest limits (fracture-lines), classical literacy without performance, integration across value categories (including **aesthetic** — typography, photography, carousel and thread visuals are part of the shipped line; see `content-tiers.md` Tier 1), refusal of grievance and hustle register, and the verb-tense discipline that forbids claiming the integration as accomplished. The author **celebrates, preserves, and transmits** the **Christian-formed West** — arts, architecture, law and constitution, science, technology, innovation, creativity — as **the high bar by the metrics he uses for excellence in those domains**, and **grieves its erosion** — see **Western heritage** in [`persona-voice.md`](persona-voice.md); do **not** infer tepidness from anti-grievance or anti–mood-board-only rules. Visual-tradition or "Western civ" curation can be useful **formation and reference input**; do **not** treat image-heavy accounts as low-value by default. The failure mode to avoid is offering **only** that curation **as the whole answer** to a holistic Axios question — not recommending beauty feeds when the author is building **eye, craft, and catalog-ready visuals**.
 
 ## Atelier
 
@@ -53,13 +53,17 @@ The shipped work. Lives in `Atelier/60-Catalog/`, organized by tier and format:
 - `Articles/` — Tier 2 longform essays.
 - `Major-Works/` — Tier 3 books, video essays, exhibitions.
 
-## Steward of Value
+## The Integrating Warrior
 
-The public **persona**. Integrated value across spiritual, intellectual, aesthetic, relational, vital, and material categories; tends concentric circles in priority order (self → family → friends → community → beyond); authority earned by the quality of life and thought, not claimed. See [`persona-voice.md`](persona-voice.md).
+The public **persona** (since 2026-04-25). Warrior trunk in active Sage integration — what survived the wounds and carries the campaign, plus the patience and synthesis being built so the campaign can continue at long horizon without burning out, becoming what is being fought, or armoring against the Return. Magus is the non-destination — never claimed. Integrated value across spiritual, intellectual, aesthetic, relational, vital, and material categories; tends concentric circles in priority order (self → family → friends → community → beyond); authority earned by the quality of life and thought, not claimed. See [`persona-voice.md`](persona-voice.md). **Verb-tense discipline:** describe the integration with in-motion verbs only — *integrating*, *practicing*, *working toward* — never *embodies*, *has integrated*, *is the X*.
 
-## Considered Witness
+**Retired 2026-04-25:** the founding persona *Steward of Value* (closed-loop discovery; questionnaire that surfaced it had been authored inside the Axios project). Retained here as a retired term so legacy material remains legible. Do not use as current persona doctrine.
 
-The public **voice**. Calm, classically literate, candidly skeptical. No outrage. No hustle. No guru. No contrarian cosplay. No performative vulnerability. See [`persona-voice.md`](persona-voice.md).
+## The Integrating Voice
+
+The public **voice** (since 2026-04-25). **Warrior cadence with Sage discipline as regulator** — direct, no euphemism, willing to take a side and stand by it, willing to name the enemy of the good — regulated by patience, synthesis, willingness to wait for the right move, willingness to name what is contested rather than only what is certain. Calm under load. Classically literate. Candidly skeptical. No outrage. No hustle. No guru. No contrarian cosplay. No performative vulnerability. See [`persona-voice.md`](persona-voice.md). **Verb-tense discipline as for the persona above.**
+
+**Retired 2026-04-25:** the founding voice *Considered Witness*. Retained here as a retired term so legacy material remains legible. Do not use as current voice doctrine.
 
 ## Truth-over-time
 
@@ -71,7 +75,7 @@ A categorical distinction, not a mechanism Grok needs to model: inner-work mater
 
 ## Value categories
 
-Six canonical value categories the Steward tracks and integrates:
+Six canonical value categories the Integrating Warrior tracks and integrates:
 
 - **Spiritual** / holy
 - **Intellectual**
@@ -84,7 +88,7 @@ Six canonical value categories the Steward tracks and integrates:
 
 ## Concentric circles
 
-Priority order of care: **self → family → friends → community → country → humanity**. The Steward tends the inner circles well before making grand universalist claims. Pieces can be tagged with which circle they primarily serve.
+Priority order of care: **self → family → friends → community → country → humanity**. The Integrating Warrior tends the inner circles well before making grand universalist claims. Pieces can be tagged with which circle they primarily serve.
 
 ## Claim-risk band, Carry band
 

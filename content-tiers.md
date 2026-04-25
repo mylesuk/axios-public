@@ -11,7 +11,7 @@ Short public pieces. High frequency relative to the other tiers. Not throwaways;
 - **Format:** X thread (`60-Catalog/Threads/`) or Instagram carousel (`60-Catalog/Carousels/`).
 - **Scope:** one clear claim, one anchor, one payoff.
 - **Source:** a mature insight, a finished article (derivatives via `/ship` in Cursor), or a clean self-contained observation.
-- **Voice:** Considered Witness, tightened for the medium. No hustle cadences. No engagement bait hooks.
+- **Voice:** the Integrating Voice (Warrior cadence with Sage discipline as regulator), tightened for the medium. No hustle cadences. No engagement bait hooks. In-motion verbs only when describing the persona's integration work.
 - **Constraint:** if the piece cannot survive without visual punch or a cliffhanger, it is not ready.
 
 ## Tier 2 — Articles
@@ -20,7 +20,7 @@ Longform essays. Lower frequency. The tier most of the author's written work liv
 
 - **Format:** longform markdown (`60-Catalog/Articles/`), produced through `/draft` in Cursor. Drafting does not run through Grok.
 - **Scope:** a full argumentative spine. Evidence. Classical resonance where it clarifies. An honest fracture paragraph where the evidence runs thin.
-- **Clarity, not grade level:** prose should move without friction — no run-on sentences, no clutter, no nested clauses obscuring the argument. Voice and precision take priority over any readability score. No Flesch-Kincaid or equivalent grade target is set; the Considered Witness register is not built to land at a specific grade and should not try. Respect the reader's intelligence; do not over-simplify, do not pad.
+- **Clarity, not grade level:** prose should move without friction — no run-on sentences, no clutter, no nested clauses obscuring the argument. Voice and precision take priority over any readability score. No Flesch-Kincaid or equivalent grade target is set; the Integrating Voice register is not built to land at a specific grade and should not try. Respect the reader's intelligence; do not over-simplify, do not pad.
 - **Sourcing:** verifiable pointers — URLs, authors, dates, canonical editions. Distinguish citation from interpretation.
 - **Ending:** lands. No hedge, no shrug, no "thoughts?".
 

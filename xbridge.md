@@ -1,5 +1,5 @@
 ---
-date: 2026-04-23
+date: 2026-04-25
 type: reference
 tags: [grok, xbridge, trigger, instruction, x-bridge]
 ---
@@ -13,7 +13,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 ## What `xbridge` is for
 
 - **X content**: threads, single posts, quote chains, replies worth preserving with author handle and URL.
-- **Current Grok conversation** (*conversation mode*): a substantive Grok reply in this chat the author wants captured as a source — verification of an X post, synthesis of a topic, analysis of an argument, expansion on a term, a multi-paragraph reading in Considered Witness register. Treat Grok as a legitimate thinking partner whose reasoning belongs in the vault; preserve the reply in full rather than compressing it. Cursor's `/distill` handles compression downstream.
+- **Current Grok conversation** (*conversation mode*): a substantive Grok reply in this chat the author wants captured as a source — verification of an X post, synthesis of a topic, analysis of an argument, expansion on a term, a multi-paragraph reading in the Integrating Voice register (Warrior cadence with Sage discipline as regulator; in-motion verbs only — never claim the integration as accomplished). Treat Grok as a legitimate thinking partner whose reasoning belongs in the vault; preserve the reply in full rather than compressing it. Cursor's `/distill` handles compression downstream.
 - **Term / word capture** (*word mode*): third-party philosophical, theological, or technical terms the author wants the vault to track. Grok may act as reference book — surface a working definition from training data, flag the provenance honestly.
 
 ## What `xbridge` is **not** for
@@ -86,7 +86,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > ## Block shape (conversation mode — when capturing Grok's own substantive reply)
 >
-> Use when the material being captured **is Grok's reply in this chat** — verification of an X post the author shared, synthesis of a topic, analysis of an argument, a multi-paragraph reading in Considered Witness register. The central discipline: **preserve, do not compress**. Cursor's `/distill` is the compression step; `xbridge` is the preservation step.
+> Use when the material being captured **is Grok's reply in this chat** — verification of an X post the author shared, synthesis of a topic, analysis of an argument, a multi-paragraph reading in the Integrating Voice register (Warrior cadence with Sage discipline as regulator; in-motion verbs only — never claim the integration as accomplished). The central discipline: **preserve, do not compress**. Cursor's `/distill` is the compression step; `xbridge` is the preservation step.
 >
 > Two sub-cases, differing only in metadata:
 >
@@ -106,9 +106,9 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > In both sub-cases the block keeps document mode's overall skeleton (`/capture`, `**Source summary**`, `**Source metadata**`, `**Candidate insights**`, `**Verbatim passages**`, `**Metadata**`, `Handoff: /capture`), with these overrides:
 >
-> 1. **`**Source summary**`** — 2–4 lines of *framing*, not digest. Name what the author asked and what Grok produced, in one honest breath. Examples: *"Author asked Grok to verify an X post by @Handre claiming Marx lived off Engels' remittances. Grok confirmed the core historical and economic claims with citations and added a Considered Witness register reading on Christian-formed markets vs. Marxist outcomes."* Do **not** summarise Grok's reply here — the reply goes into Verbatim passages below, in full.
+> 1. **`**Source summary**`** — 2–4 lines of *framing*, not digest. Name what the author asked and what Grok produced, in one honest breath. Examples: *"Author asked Grok to verify an X post by @Handre claiming Marx lived off Engels' remittances. Grok confirmed the core historical and economic claims with citations and added an Integrating Voice register reading on Christian-formed markets vs. Marxist outcomes."* Do **not** summarise Grok's reply here — the reply goes into Verbatim passages below, in full.
 >
-> 2. **`**Verbatim passages**`** — Grok's substantive reply, preserved in full as blockquoted paragraphs. Break on Grok's natural paragraph structure; one `> ` prefix per paragraph. Do not collapse paragraphs into bullets. Do not truncate. Do not add ellipses. If the reply had section headings (e.g. a *Considered Witness register* paragraph), keep them inline as bolded lead-ins inside the blockquote (`> **In Considered Witness register:** ...`).
+> 2. **`**Verbatim passages**`** — Grok's substantive reply, preserved in full as blockquoted paragraphs. Break on Grok's natural paragraph structure; one `> ` prefix per paragraph. Do not collapse paragraphs into bullets. Do not truncate. Do not add ellipses. If the reply had section headings (e.g. an *Integrating Voice register* paragraph), keep them inline as bolded lead-ins inside the blockquote (`> **In Integrating Voice register:** ...`). Inflation language — *embodies*, *has integrated*, *is the X* — is forbidden inside the `> **Grok's reading:**` block; use in-motion verbs (*integrating*, *practicing*, *working toward*) wherever the reading describes the persona's integration work.
 >
 >    **Sub-case B — mandatory ordering.** The **first** line inside `**Verbatim passages**` MUST be exactly `> **Grok's reading:**` and nothing else on that line. **Every following line** of Grok's prior reply MUST be its own blockquote (`> ` …), one paragraph per blockquote block, until the full reply is reproduced — same wording Grok already emitted in this thread; do not rewrite in a snappier voice. That header is non-negotiable for sub-case B — it is how Cursor and the author see that the vault is receiving **Grok's layer**, not a faux-document-mode digest. Only **after** Grok's full reply is reproduced may you optionally append the X post's **actual** text (from the X tool / thread), each excerpt blockquoted with a final attribution line `— @{external-handle}, YYYY-MM-DD`. **Never** put only the poster's lines in Verbatim passages when conversation-mode B was triggered. **Never** invent or paraphrase the poster's wording and present it as quoted X text — if you do not have the literal post text from the tool, omit it rather than fabricate.
 >
@@ -245,7 +245,7 @@ Use this shape when the author pasted an X post / article / URL and Grok wrote a
 /capture
 
 **Source summary**
-Author asked Grok to verify an X post by @Handre claiming Marx lived on Engels' remittances and that the historical outcomes of Marxism contrast sharply with market-oriented liberalization. Grok confirmed the core historical and economic claims with citations (Engels' Manchester textile income, labor theory of value vs. Menger's 1871 marginalist revolution, Black Book of Communism mortality estimates, post-1980 global poverty reduction) and added a Considered Witness register reading on Christian-formed markets vs. Marxist outcomes.
+Author asked Grok to verify an X post by @Handre claiming Marx lived on Engels' remittances and that the historical outcomes of Marxism contrast sharply with market-oriented liberalization. Grok confirmed the core historical and economic claims with citations (Engels' Manchester textile income, labor theory of value vs. Menger's 1871 marginalist revolution, Black Book of Communism mortality estimates, post-1980 global poverty reduction) and added an Integrating Voice register reading on Christian-formed markets vs. Marxist outcomes.
 
 **Source metadata**
 - **source-type:** x-post
@@ -273,7 +273,7 @@ Author asked Grok to verify an X post by @Handre claiming Marx lived on Engels' 
 
 > The attached cartoon is satirical exaggeration — Marx lounging while Engels props him up — but it visually compresses the documented irony without fabricating it.
 
-> **In Considered Witness register:** the post names a real fracture line in the Western inheritance. The Christian-formed West built the institutions, legal norms, and economic order that demonstrated, in practice, how voluntary exchange and private property can compound human flourishing on a civilizational scale. Marxism's intellectual descendants tested the opposite proposition at horrific cost. The data and the bodies speak plainly. What the Steward transmits is not grievance but the high bar itself: markets, under rule of law and moral formation, lifted billions while the alternative delivered scarcity and slaughter. The irony Marx embodied is not the punchline; it is the cautionary signal worth remembering when any system promises to liberate the worker by first seizing the means of production.
+> **In Integrating Voice register:** the post names a real fracture line in the Western inheritance. The Christian-formed West built the institutions, legal norms, and economic order that demonstrated, in practice, how voluntary exchange and private property can compound human flourishing on a civilizational scale. Marxism's intellectual descendants tested the opposite proposition at horrific cost. The data and the bodies speak plainly. What the Integrating Warrior transmits here is not grievance but the high bar itself: markets, under rule of law and moral formation, lifted billions while the alternative delivered scarcity and slaughter. The irony Marx personified is not the punchline; it is the cautionary signal worth remembering when any system promises to liberate the worker by first seizing the means of production.
 
 — Grok verification, in Axios project chat, 2026-04-24
 
