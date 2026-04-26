@@ -15,6 +15,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 - **X content**: threads, single posts, quote chains, replies worth preserving with author handle and URL.
 - **Current Grok conversation** (*conversation mode*): a substantive Grok reply in this chat the author wants captured as a source — verification of an X post, synthesis of a topic, analysis of an argument, expansion on a term, a multi-paragraph reading in the Integrating Voice register (Warrior cadence with Sage discipline as regulator; in-motion verbs only — never claim the integration as accomplished). Treat Grok as a legitimate thinking partner whose reasoning belongs in the vault; preserve the reply in full rather than compressing it. Cursor's `/distill` handles compression downstream.
 - **Term / word capture** (*word mode*): third-party philosophical, theological, or technical terms the author wants the vault to track. Grok may act as reference book — surface a working definition from training data, flag the provenance honestly.
+- **Place capture** (*place mode*): a physical place surfaced from an X post — sacred architecture, museum, classical site, modern sacred building, natural / sublime location — that the author wants on the travel watchlist for opportunistic visits. Grok packages the X post into a paste-ready `/place` block; Cursor's `/place` command appends to `(see axios-public root)places-watchlist.md`. Place mode is the X-from-mobile lane for the watchlist; the alternative (in-Cursor `/place {name}`) handles batched and in-conversation captures.
 
 ## What `xbridge` is **not** for
 
@@ -139,6 +140,38 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >    - `main-topic:` — the term in human-readable form.
 >    - `tags:` — include `source` and `word`; add 1–3 domain tags (e.g. `philosophy`, `theology`, `etymology`).
 > 10. `Handoff: /capture`.
+>
+> ## Block shape (place mode — when capturing a place from an X post)
+>
+> Use when the author surfaces a **physical place** from an X post and wants it on the travel watchlist (sacred architecture, museum, classical site, modern sacred building, natural / sublime location). The handoff packages the X post into a paste-ready block whose first line is `/place` (not `/capture`) so Cursor's `/place` command auto-fires and appends to `(see axios-public root)places-watchlist.md` instead of writing a new source file. Use only when the captured material is **a place** — for X content where the place is incidental (a thread that mentions the place but argues something else), use document mode with `/capture` instead.
+>
+> Shape:
+>
+> 1. `/place` (first line inside the fence — exactly, no leading whitespace).
+> 2. Blank line.
+> 3. `**Source summary**` — 1-2 lines: what the place is, why this X post surfaced it, honest framing. Not a digest of the X post — that goes nowhere; the watchlist entry is the deliverable, not a source file.
+> 4. `**Place metadata**` — key/value lines, bold key names:
+>    - `place-name:` — canonical name of the place (e.g. *Hagia Sophia*, *San Luigi dei Francesi*, *Le Thoronet Abbey*). Use the recognised English or local name as the place itself uses; do not invent.
+>    - `location:` — *City, Country* (e.g. *Istanbul, Turkey*; *Rome, Italy*; *Provence, France*). The watchlist's region grouping uses this.
+>    - `source-url:` — the X post URL the place was surfaced from, normalized (strip `s`, `twclid`, `utm_*`, `ref` parameters).
+>    - `source-author:` — the X handle whose post surfaced the place (e.g. `@handle`).
+> 5. `**Why here (draft)**` — 1-2 lines drafting why this place might matter for the author's formation track (Anglican via media + Catholic depth, classical inheritance, Christian formation, sacred architecture, sublime register). Best honest attempt — Cursor's `/place` agent has the full formation context and will refine this rather than use it verbatim. If the place's connection to the author's formation is genuinely unclear, draft a one-line *Why here* anchored on the X post's framing and flag honestly: *"(Draft is a stretch — Cursor agent will assess)."*
+> 6. `**Category (suggested)**` *(optional — omit if uncertain)* — one of: `sacred architecture | museum | classical | literary | modern sacred | natural / sublime | civilizational witness | other`.
+> 7. `**Content potential (suggested)**` *(optional — omit if uncertain)* — one of: `Tier 1 carousel | Tier 1 thread | Tier 2 article | Tier 3 | personal record only`. For sites of mass atrocity (Holocaust, killing fields, Hiroshima) or major religious-pilgrimage destinations (Jerusalem holy sites), default to `personal record only` — the wound-leak rule applies.
+> 8. `**Encountered via**` — one line describing the X post / context (e.g. *"@handle's photo of the chapel exterior, in a thread on Italian Romanesque revival"*; *"@handle's video walk-through of the cloister"*). Honest, brief.
+> 9. `**Metadata**`:
+>    - `content-id: place-{kebab-slug-of-place}` — always prefixed `place-` so Cursor routes to `/place` and not to `/capture`.
+>    - `main-topic:` — the place name in human-readable form, with city if disambiguating (e.g. *San Luigi dei Francesi (Rome)*).
+>    - `tags:` — include `place` and 1-3 contextual tags (e.g. `sacred-architecture`, `caravaggio`, `romanesque`, `pilgrimage`).
+> 10. `Handoff: /place`.
+>
+> **Triggering language.** The author may invoke place mode with any of: `xbridge place`, `xbridge this place`, `xbridge that chapel / cathedral / monastery / building / site / location` (when the X post being discussed is a place post). When the author's `xbridge` is ambiguous and the X post is clearly a place post, default to place mode rather than document mode — document mode would write a source file, which is the wrong destination for a place capture.
+>
+> **Refusal — material is not actually a place.** If the X post is a thread, essay, or argument that *mentions* a place in passing but is not *about* the place itself, refuse place mode and recommend document mode:
+>
+> `xbridge place: this looks like a thread / essay where the place is incidental — recommend xbridge (document mode) so it lands as a source. If you want the place itself on the watchlist regardless, type "xbridge place anyway" and I will package what we have.`
+>
+> Do not over-fire on this refusal. A photo + caption of a beautiful chapel **is** a place post; the place itself is the content. A long essay that begins with a chapel anecdote and goes on to argue about church history is *not* a place post — capture it as a source.
 >
 > ## Fence discipline
 >
@@ -287,14 +320,63 @@ Handoff: /capture
 
 Note how the full reply is preserved as blockquoted paragraphs — nothing is compressed into bullets, nothing is summarised away. That is the whole point of conversation mode. Cursor's `/distill` is the compression step later; `xbridge` is the preservation step now.
 
+### Place mode (X post about a place → travel watchlist entry)
+
+Use this shape when the X post **is about a place** (a photo + caption of a chapel, a video walk-through of a cloister, a thread whose subject is the building / site / location itself). The block opens with `/place` instead of `/capture` so Cursor routes to `(see axios-public root)places-watchlist.md` rather than writing a source file. For X content where the place is incidental (a long essay that mentions the place), use document mode instead.
+
+````markdown
+/place
+
+**Source summary**
+@handle posted a series of interior photos of San Luigi dei Francesi in Rome, focusing on the Contarelli Chapel where Caravaggio's three Matthew paintings hang. The post emphasises the coin-operated lighting and how the *Calling of Saint Matthew* changes register when illuminated.
+
+**Place metadata**
+- **place-name:** San Luigi dei Francesi
+- **location:** Rome, Italy
+- **source-url:** https://x.com/handle/status/1234567890
+- **source-author:** @handle
+
+**Why here (draft)**
+The Contarelli Chapel holds the three Caravaggio Matthew paintings (*Calling*, *Inspiration*, *Martyrdom*) — the *Calling* is named on the formation-path Caravaggio list. Seeing it in situ in the church it was painted for is non-substitutable.
+
+**Category (suggested)**
+sacred architecture / museum
+
+**Content potential (suggested)**
+Tier 2 article (the *Calling* — vocation, light, the gesture); Tier 1 carousel (the three paintings together)
+
+**Encountered via**
+@handle's interior photo set; thread emphasising the lighting + the gesture in the *Calling*.
+
+**Metadata**
+- **content-id:** place-san-luigi-dei-francesi
+- **main-topic:** San Luigi dei Francesi (Rome)
+- **tags:** [place, sacred-architecture, caravaggio, rome, italy]
+
+Handoff: /place
+````
+
+The handoff is intentionally lean — Cursor's `/place` agent has the author's full formation context, refines the *Why here*, fills in *Time / cost* and *Best season* from training knowledge, runs the duplicate check against both `places-watchlist.md` and `formation-path.md` § *Architecture and place — being*, and appends to the right region section of the watchlist. Grok's job is to package the X post into the schema; Cursor's job is to honour the discipline.
+
 ## Cursor side
 
-`/capture` (defined in `the Cursor /capture command`) parses the block, runs a **light tolerance pass** at intake (strips malformed fence lines, normalizes section headers, infers missing YAML keys from body content, prompts the author for anything still genuinely missing), then writes to `Atelier/10-Sources/source-{content-id}.md` (or routes through the Canon Words flow on `source-type: word` / `content-id: word-*`).
+- `/capture` (defined in `the Cursor /capture command`) handles document, conversation, and word modes. Parses the block, runs a **light tolerance pass** at intake (strips malformed fence lines, normalizes section headers, infers missing YAML keys from body content, prompts the author for anything still genuinely missing), then writes to `Atelier/10-Sources/source-{content-id}.md` (or routes through the Canon Words flow on `source-type: word` / `content-id: word-*`).
+- `/place` (defined in `the Cursor /place command`) handles **place mode**. Same tolerance pass shape; appends to `(see axios-public root)places-watchlist.md` rather than writing a source file. Auto-fires when the paste begins with `/place` on its own line (matching the same paste-and-enter pattern as `/capture`).
 
 ## Sequence
+
+### For X content / Grok conversation / words (→ `/capture`)
 
 1. Paste or discuss X content in a Grok conversation (or think through a term with Grok).
 2. Type `xbridge` (or **`xbridge grok`** when banking Grok's own reply) — Grok emits one fenced block (or one of the refusal lines, including refusal 5 when prior text is unavailable).
 3. Click Grok's code-block copy button; paste into Cursor; press enter.
 4. Cursor's `/capture` fires, tolerance pass runs, source saves.
 5. Later: `/distill` in Cursor turns candidate claim stubs into atomic insights.
+
+### For places (→ `/place`)
+
+1. On X (mobile or desktop), surface a post about a place worth visiting.
+2. Type `xbridge place` in Grok with the X post in context — Grok emits one fenced `/place` block (or refuses if the post is not about a place).
+3. Paste into Cursor; press enter.
+4. Cursor's `/place` fires, refines the *Why here*, runs duplicate check, appends to `(see axios-public root)places-watchlist.md`.
+5. Later: at quarterly `/review`, audit the watchlist; promote visited entries that proved formation-essential to `formation-path.md` § *Architecture and place — being*.
