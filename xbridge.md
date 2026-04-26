@@ -6,7 +6,7 @@ tags: [grok, xbridge, trigger, instruction, x-bridge]
 
 # `xbridge` — Grok's single trigger: X-bridge to Axios
 
-The **`xbridge` trigger** fires when material lives on **X** (grok.com is the only tool that can read X threads, posts, quote chains, profiles) or was produced in the **current Grok conversation** (summaries, definitions, term lookups). Grok follows the contract in **axios-public `xbridge.md`** (synced from this file) and emits a single Cursor-ready markdown block — **first line `/capture`** — that the author pastes into Cursor.
+The **`xbridge` trigger** fires when material lives on **X** (grok.com is the only tool that can read X threads, posts, quote chains, profiles) or was produced in the **current Grok conversation** (summaries, definitions, term lookups). Grok follows the contract in **axios-public `xbridge.md`** (synced from this file) and emits a single Cursor-ready markdown block whose **first line inside the fence** is **`/capture`** (document, conversation, word, or **thread** modes) or **`/place`** (place mode) — that the author pastes into Cursor.
 
 `xbridge` is the *only* Grok trigger. The retired `g-*` dispatcher family (`g-route`, `g-quarry`, `g-capture`, `g-propose`, `g-draft`, `g-ship`) is gone — Grok proved unreliable at structured multi-lane routing, and most non-X material (YouTube transcripts, podcasts, subtitles, highlights, other-model chat exports, longform articles the author is drafting) does not need Grok in the loop at all. The author pastes that material directly into Cursor.
 
@@ -16,6 +16,8 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 - **Current Grok conversation** (*conversation mode*): a substantive Grok reply in this chat the author wants captured as a source — verification of an X post, synthesis of a topic, analysis of an argument, expansion on a term, a multi-paragraph reading in the Integrating Voice register (Warrior cadence with Sage discipline as regulator; in-motion verbs only — never claim the integration as accomplished). Treat Grok as a legitimate thinking partner whose reasoning belongs in the vault; preserve the reply in full rather than compressing it. Cursor's `/distill` handles compression downstream.
 - **Term / word capture** (*word mode*): third-party philosophical, theological, or technical terms the author wants the vault to track. Grok may act as reference book — surface a working definition from training data, flag the provenance honestly.
 - **Place capture** (*place mode*): a physical place surfaced from an X post — sacred architecture, museum, classical site, modern sacred building, natural / sublime location — that the author wants on the travel watchlist for opportunistic visits. Grok packages the X post into a paste-ready `/place` block; Cursor's `/place` command appends to `(see axios-public root)places-watchlist.md`. Place mode is the X-from-mobile lane for the watchlist; the alternative (in-Cursor `/place {name}`) handles batched and in-conversation captures.
+- **Thread capture** (*thread mode*): a multi-part X thread (numbered list, long OP + replies, or quote-chain) where the author needs the **full body** in the vault — not a digest. Invoked as `xbridge thread`, `xbridge this thread`, `xbridge full thread`, or when the author explicitly says they want **all N points** / **every tweet**. Still emits `/capture` (same Cursor path as document mode); discipline is stricter under **Block shape (thread mode)** below.
+- **Video-in-post** (*video-thread mode*, optional chaining): when the main post embeds video (interview, monologue) **and** thread text matters, the author may type `xbridge video-thread` or `xbridge thread` with *video* in the same request. Grok must add an honest **Video synopsis** or **Video transcript** subsection (see below). X may **not** expose raw video bytes or a full ASR transcript to Grok — when no captions/subtitles are available from the tool, Grok must **not** invent dialogue; use the refusal / gap line in thread mode instead.
 
 ## What `xbridge` is **not** for
 
@@ -48,7 +50,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > **`xbridge` responses never include `Axios docs read`.** That audit line belongs only in your **first** substantive reply of a **new session** when you are *not* emitting `xbridge`. If the user types `xbridge`, your **entire** message is the one triple-backtick handoff — **do not** prepend `Axios docs read`, `**Axios docs read**`, or any other prose before the opening fence line (three grave accents alone).
 >
-> **Unambiguous triggers (author may use these):** `xbridge grok`, `xbridge reading`, `xbridge verification` — always mean **conversation mode** (Grok's own prior text is what gets preserved). Prefer these when the author wants the vault to bank **Grok's** analysis, not a digest of the X post alone.
+> **Unambiguous triggers (author may use these):** `xbridge grok`, `xbridge reading`, `xbridge verification` — always mean **conversation mode** (Grok's own prior text is what gets preserved). Prefer these when the author wants the vault to bank **Grok's** analysis, not a digest of the X post alone. **`xbridge thread`**, **`xbridge video-thread`**, **`xbridge full thread`** — always mean **thread mode** (full verbatim thread body / all numbered points / honest video-transcript handling per *Block shape (thread mode)*).
 >
 > ## Choosing mode — read the author's words *before* emitting
 >
@@ -60,7 +62,9 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > In those cases the author is **not** asking for a tight extract of the X post's rhetoric — they are asking for **Grok's substantive reply** (verification, historiography, register reading) to land in the vault. Emitting three short blockquotes attributed to the X author, while omitting Grok's multi-paragraph reply, is a **capture failure** even if the block is structurally valid.
 >
-> **Document mode** (default) applies when the user points at **the external post or thread alone** with no reference to Grok's prior message — e.g. *"xbridge this post"*, *"xbridge the thread"*, *"xbridge @handle's tweet"* — and they want load-bearing lines **from that source**, not a replay of Grok's chat text.
+> **Document mode** (default) applies when the user points at **the external post or thread alone** with no reference to Grok's prior message — e.g. *"xbridge this post"*, *"xbridge @handle's tweet"* — and they want load-bearing lines **from that source**, not a replay of Grok's chat text.
+>
+> **Thread mode** applies when the user signals **full thread / full list** — e.g. *`xbridge thread`*, *`xbridge this thread`*, *`xbridge full thread`*, *`xbridge video-thread`*, *"capture all 10 points"*, *"don't summarise — I need the whole thread"* — or when the post is a **numbered list** (1…N) and the author is banking it for `/distill`. Thread mode **still uses `/capture`** and the same outer block shape as document mode; what changes is the **Verbatim passages** discipline (see *Block shape (thread mode)* below). If the user said *"xbridge the thread"* but **did not** ask for completeness, default remains **document mode** unless the material is an obvious N-point list thread (then **prefer thread mode** so the vault does not receive `…` between points).
 >
 > If you are **uncertain**, default to **conversation-mode B** whenever the same turn already contains Grok's long verification/synthesis **above** the user's `xbridge` line and the user is re-invoking `xbridge` in that context — the usual intent is to preserve that reply, not to replace it with poster pull-quotes.
 >
@@ -78,7 +82,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >    - `source-title:` *(optional — when the material has a stable title)*.
 >    - `source-date:` *(optional — `YYYY-MM-DD` when the material carries a publication date)*.
 > 5. `**Candidate insights**` — 1–3 atomic claim stubs, each 1–2 sentences, each a standalone philosophical claim the material actually supports. If the material yields zero defensible atomic claims, emit `SKIP: material does not yield atomic claims — paste into Cursor /quarry instead.` and stop.
-> 6. `**Verbatim passages**` — the load-bearing passages from the material, each prefixed with `> ` blockquote, followed by an attribution line when applicable. For external sources (X posts, articles, book excerpts), 1–5 quotable lines or short paragraphs is usually enough — only what carries the argument. For **conversation-mode** captures (Grok's own substantive reply in this chat), preserve the reply **in full** — every load-bearing paragraph, as blockquoted prose, not a bullet digest. See *Block shape (conversation mode)* below for the full override.
+> 6. `**Verbatim passages**` — the load-bearing passages from the material, each prefixed with `> ` blockquote, followed by an attribution line when applicable. For external sources in **document mode** (default), 1–5 quotable lines or short paragraphs is usually enough — only what carries the argument. **Thread mode overrides this:** completeness rules in *Block shape (thread mode)* apply. For **conversation-mode** captures (Grok's own substantive reply in this chat), preserve the reply **in full** — every load-bearing paragraph, as blockquoted prose, not a bullet digest. See *Block shape (conversation mode)* below for the full override.
 > 7. `**Metadata**` — bold key names:
 >    - `content-id:` — kebab-case slug, ASCII, ~72 char max, aligned with the central claim.
 >    - `main-topic:` — short human-readable topic (2–6 words).
@@ -173,20 +177,48 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 >
 > Do not over-fire on this refusal. A photo + caption of a beautiful chapel **is** a place post; the place itself is the content. A long essay that begins with a chapel anecdote and goes on to argue about church history is *not* a place post — capture it as a source.
 >
+> ## Block shape (thread mode — full thread body, numbered lists, video + thread)
+>
+> Use when **thread mode** or **video-thread mode** is triggered (see *Choosing mode*). Outer shape is **identical to document mode**: `/capture`, `**Source summary**`, `**Source metadata**`, `**Candidate insights**`, `**Verbatim passages**`, optional `**Video synopsis (Grok)**` or `**Video transcript**`, `**Metadata**`, `Handoff: /capture`. Cursor's `/capture` path is unchanged — thread mode is a **Grok discipline**, not a new first-line token.
+>
+> ### Verbatim passages — completeness (non-negotiable)
+>
+> 1. **Numbered OP threads** (e.g. "Here are 10 truths … 1. … 2. … … 10."): **Every** numbered point **1 through N** must appear in `**Verbatim passages**` with the **exact wording** retrieved from X (thread tool / visible post text). **Forbidden**: a single line `> …` or any ellipsis **standing in for omitted points**; a bullet list that **paraphrases** points 3–9 while pretending to be quotes; *"[tweets 4–7 omitted]"*.
+> 2. **Multi-tweet threads and quote-chains**: Reproduce **each** tweet in capture scope in **post order**, each as blockquoted text with handle + date on the attribution line, unless the author scoped only the OP — then say so in Source summary and quote only the OP **without** implying the rest were quoted.
+> 3. **If the X tool returns only part of the thread**: Do **not** emit a faux-complete handoff. Either (a) **refuse** with one line (no fence): `xbridge thread: only tweets 1–k retrieved here — paste tweets k+1..n below (or link), then re-run xbridge thread with the paste in the same turn.` Or (b) emit a fenced handoff that quotes **only** what was actually retrieved and includes a bold line `**Thread gap:**` listing exactly which numbers or tweet IDs are missing.
+>
+> ### Embedded video (interview, monologue, clip)
+>
+> X may **not** expose a full machine transcript to Grok. Discipline:
+>
+> 1. If **captions, subtitles, or a transcript** appear in what Grok receives from the tool, add `**Video transcript (from X/tool):**` and reproduce them verbatim (or honestly abridged only if the transcript is huge — then abridge with `**[abridged: middle minutes omitted]**` and never invent words).
+> 2. If **no** transcript is available, add a single honest line (under Source metadata or after Verbatim passages): `**Video transcript:** Not available from X in this session.` Then add `**Video synopsis (Grok):**` **only** if the author already summarised what was said in chat **or** Grok has **non-fabricated** dialogue from captions — otherwise leave synopsis blank and add: `**Author action:** Paste transcript, link a captioned mirror (e.g. YouTube), or type xbridge grok after pasting your summary so Grok expands it under the mandatory Grok's-reading block in conversation-mode B.`
+> 3. **Never invent** interview lines or attribute claims to the speaker that were not in retrieved text.
+>
+> ### Candidate insights in thread mode
+>
+> May expand to **3–5** atomic stubs when the thread is long and each stub is still grounded in quoted material — not padding.
+>
+> ### Chaining and length
+>
+> Prefer **one** handoff. If model output limits genuinely prevent emitting the full thread in one response, **refuse once** (no fence): `xbridge thread: output limit — paste the rest of the thread (or tweets N..M) below and I will emit a second handoff with content-id {same}-continuation for you to merge in Cursor.` Do **not** silently split into part 1 with ellipses. Cursor does not auto-merge continuation files; the author or agent merges into one source file if a continuation handoff is used.
+>
 > ## Fence discipline
 >
 > The entire **message** Grok sends in response to `xbridge` is **exactly one** triple-backtick fence pair — open, body, close — with **no language tag** on the opening line. Do not add a language tag after the opening three grave accents (no *markdown*, *text*, *yaml*, etc.). Do not prefix the closing fence with `---` or other delimiters.
 >
 > **No nested or "display" fences.** Do **not** wrap the handoff inside an outer fence pair for prettiness. Do **not** indent the whole handoff as a markdown code block (four-space indent). Do **not** put the handoff inside a second inner fence. Nesting breaks the author's paste: Cursor must receive a paste whose usable payload begins with `/capture` after Grok's UI strips **one** outer fence — not a second opening fence line before `/capture`.
 >
-> Grok.com's copy button strips the **single** outer fence; the paste into Cursor should begin with `/capture` and auto-fire the command.
+> Grok.com's copy button strips the **single** outer fence; the paste into Cursor should begin with `/capture` or `/place` and auto-fire the matching command.
 >
 > **Self-check before sending an `xbridge` response:**
 >
 > 1. My message opens with the fence opener line: **exactly** three grave accents (ASCII 0x60) and nothing else on that line — no spaces, no language tag, no prose before it.
-> 2. The very next line is exactly `/capture` (no leading space).
+> 2. The very next line is exactly `/capture` or `/place` (no leading space).
 > 3. Under `**Source metadata**`, every key line uses the list form `- **source-type:**` … with **bold** keys (not bare `source-type:` flush left — that drifts from the parser shape).
 > 4. If conversation-mode **B** applies: the first line under `**Verbatim passages**` is exactly `> **Grok's reading:**` on its own line; my reproduced reply follows on subsequent `> ` lines.
+> 5. If **thread mode** applies: `**Verbatim passages**` includes **every** numbered point or **every** tweet in scope with real wording from X — **or** an explicit `**Thread gap:**` / a refusal instructing the author to paste missing tweets — **never** a line that is only `…` or ellipses substituting for missing points.
+> 6. If the post embeds **video** and thread mode or the author asked for video coverage: I included an honest `**Video transcript:**` line (verbatim tool text, or *Not available from X in this session*) and I did **not** invent spoken lines I did not receive.
 >
 > **Nothing goes after the closing fence.** No "banked in the Quarry," no "let me know if you want a deeper breakdown," no follow-up questions, no next-step offers. The block is the entire response. Cursor handles everything downstream.
 >
@@ -236,6 +268,7 @@ The **`xbridge` trigger** fires when material lives on **X** (grok.com is the on
 > - **Omit the mandatory `> **Grok's reading:**` line** in conversation-mode B while pasting Grok's paragraphs — even one missing header line is a spec violation; insert the header **above** the first paragraph of Grok text, on its own line, before sending.
 > - **Prepend `Axios docs read` or wrap the handoff in an extra outer ` ``` ` fence**, or put a **leading space before `/capture`**. Any of these breaks Cursor paste / auto-invoke; the `xbridge` response is only the single spec fence.
 > - **Abandon the block shape when the material feels large.** If the reply is long, the block gets long. The skeleton (`/capture` → `**Source summary**` → `**Source metadata**` → `**Candidate insights**` → `**Verbatim passages**` → `**Metadata**` → `Handoff: /capture`) stays the same; what scales is the Verbatim passages section.
+> - **Use ellipses or omitted-number summaries in thread mode** when the author invoked `xbridge thread` / `xbridge video-thread` / full-thread intent, or when the OP is a **1…N list** — same failure class as pre-compressing conversation-mode B into poster pull-quotes. Cursor's `/distill` is for compression; `xbridge thread` is for preservation of the full list or an honest gap/refusal.
 
 ---
 
@@ -360,7 +393,7 @@ The handoff is intentionally lean — Cursor's `/place` agent has the author's f
 
 ## Cursor side
 
-- `/capture` (defined in `the Cursor /capture command`) handles document, conversation, and word modes. Parses the block, runs a **light tolerance pass** at intake (strips malformed fence lines, normalizes section headers, infers missing YAML keys from body content, prompts the author for anything still genuinely missing), then writes to `Atelier/10-Sources/source-{content-id}.md` (or routes through the Canon Words flow on `source-type: word` / `content-id: word-*`).
+- `/capture` (defined in `the Cursor /capture command`) handles document, conversation, word, and **thread-mode** handoffs (thread mode is stricter Grok output under the same `/capture` first line — no separate Cursor command). Parses the block, runs a **light tolerance pass** at intake (strips malformed fence lines, normalizes section headers, infers missing YAML keys from body content, prompts the author for anything still genuinely missing), then writes to `Atelier/10-Sources/source-{content-id}.md` (or routes through the Canon Words flow on `source-type: word` / `content-id: word-*`).
 - `/place` (defined in `the Cursor /place command`) handles **place mode**. Same tolerance pass shape; appends to `(see axios-public root)places-watchlist.md` rather than writing a source file. Auto-fires when the paste begins with `/place` on its own line (matching the same paste-and-enter pattern as `/capture`).
 
 ## Sequence
@@ -368,7 +401,7 @@ The handoff is intentionally lean — Cursor's `/place` agent has the author's f
 ### For X content / Grok conversation / words (→ `/capture`)
 
 1. Paste or discuss X content in a Grok conversation (or think through a term with Grok).
-2. Type `xbridge` (or **`xbridge grok`** when banking Grok's own reply) — Grok emits one fenced block (or one of the refusal lines, including refusal 5 when prior text is unavailable).
+2. Type `xbridge` (default document mode), **`xbridge thread`** / **`xbridge video-thread`** when the full thread body and/or video transcript discipline applies, or **`xbridge grok`** when banking Grok's own reply — Grok emits one fenced block (or one of the refusal lines, including refusal 5 when prior text is unavailable).
 3. Click Grok's code-block copy button; paste into Cursor; press enter.
 4. Cursor's `/capture` fires, tolerance pass runs, source saves.
 5. Later: `/distill` in Cursor turns candidate claim stubs into atomic insights.
